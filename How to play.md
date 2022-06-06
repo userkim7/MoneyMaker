@@ -1,1 +1,1 @@
-
+# How to play
