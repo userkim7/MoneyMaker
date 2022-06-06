@@ -25,7 +25,7 @@
 
 ##### 4 characters added
   + Alex the normal
-  + Bob the strong
+  + Bob the healthy
   + Lucy the lucky
   + Richard the rich
 
