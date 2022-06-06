@@ -2,6 +2,10 @@
 ### text_based game
 
 ---
+### ***v0.4.0***
+##### 1 characters added
+  + Reco the smartest
+
 ### ***v0.3.0***
 ##### 3 characters added
   + Randy the ?
