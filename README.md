@@ -1,6 +1,7 @@
-# MoneyMaker-text_based game
+# MoneyMaker
+###text_based game
 
-v0.1
+####v0.1
 
 4 character
 Alex the normal
