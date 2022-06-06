@@ -211,13 +211,13 @@ class event:
         List=[]
         for _ in range(3):
             List.append(choice(self.upgrade_list))
-        print('0'*70)
+        print('0'*20)
         print('')
         for i in List:
             print('-',end='')
             print(i)
         print('')
-        print('0'*70)
+        print('0'*20)
         user=''
         while not user:
             try:
@@ -287,7 +287,7 @@ energy...-{List[0]}''')
 energy...-{List[0]}''')
                 return 1
         elif utility=='Medicine_I':
-            List=[200,20]
+            List=[200,10]
             if gs.money>=List[0]:
                 gs.money-=List[0]
                 gs.health+=List[1]
@@ -296,7 +296,7 @@ energy...-{List[0]}''')
 money...-{List[0]}''')
                 return 1
         elif utility=='Medicine_II':
-            List=[400,50]
+            List=[400,25]
             if gs.money>=List[0]:
                 gs.money-=List[0]
                 gs.health+=List[1]
@@ -537,7 +537,7 @@ energy...-{List[0]}''')
             try:
                 test=int(user[2:])
             except:
-                if user=='NextDay' or user=='Stats' or user=='End':
+                if user=='Nextday' or user=='Stats' or user=='End':
                     return user
                 user=''
                 print('\nincorrect input\n')
@@ -546,11 +546,11 @@ energy...-{List[0]}''')
                 print('\nincorrect input\n')
                 user=''
             elif user[:2]=='U_':
-                if int(user[2:])>ma.utility_num:
+                if int(user[2:])>gs.utility_num:
                     user=''
                     print('\nincorrect input\n')
             elif user[:2]=='W_':
-                if int(user[2:])>ma.work_num:
+                if int(user[2:])>gs.work_num:
                     user=''
                     print('\nincorrect input\n')
 
@@ -573,8 +573,6 @@ class main:
         self.days=1
         self.player_energy=0
         self.next_energy=0
-        self.utility_num=3
-        self.work_num=3
         self.rest=False
         
     def help(self):
@@ -711,14 +709,14 @@ not recommended
     def day(self):
         if gs.health<0:
             self.rest=True
-            user='NextDay'
-        else:
+            user='Nextday'
+        if not self.rest:
             user=''
         List_U=ev.choose_utility()
         List_W=ev.choose_work()
         self.player_energy=gs.energy+self.next_energy
         self.next_energy=0
-        while not user=='NextDay':
+        while not user=='Nextday':
             print('')
             print('0'*20)
             print('\nutility\n')
@@ -746,7 +744,7 @@ talent: {gs.talent}
 luck: {gs.luck}''')
             elif user=='End':
                 gs.money=0
-                user='NextDay'
+                user='Nextday'
             if type(user)=='str':
                 continue
             if user[0]==ev.command_list[0]:
@@ -794,7 +792,7 @@ while True:
             if gs.health>=20:
                 ma.rest=False
         else:
-            gs.health+=int((ma.player_energy+1-gs.energy)/2)
+            gs.health+=int((ma.player_energy+1-gs.energy)/1.2)
               
         gs.money-=tax
         print(f'\nmoney...-{tax}')
