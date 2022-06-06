@@ -12,7 +12,7 @@ class game_set:
         self.luck=3
         
         self.type_list=['40-days','80-days','infinity']
-        self.character_list=['Alex','Bob','Emma','Genie','Lucy','Richard','Tester','_____']
+        self.character_list=['Alex','Bob','Emma','Genie','Lucy','Randy','Richard','Sonic','Stella','Tester','_____']
         self.background_list=['village', #Lv1
                               'town','school', #Lv2
                               'farm','port','train', #Lv3
@@ -99,6 +99,15 @@ class game_set:
             self.wisdom=2
             self.talent=4
             self.luck=10
+        elif setting[1]=='Randy':
+            self.energy=randint(1,9)
+            self.money=randint(100,900)
+            self.health=randint(10,90)
+            self.strength=randint(1,5)
+            self.agility=randint(1,5)
+            self.wisdom=randint(1,5)
+            self.talent=randint(1,5)
+            self.luck=randint(1,5)
         elif setting[1]=='Richard':
             self.energy=4
             self.money=3000
@@ -108,6 +117,24 @@ class game_set:
             self.wisdom=4
             self.talent=3
             self.luck=3
+        elif setting[1]=='Sonic':
+            self.energy=5
+            self.money=300
+            self.health=70
+            self.strength=2
+            self.agility=13
+            self.wisdom=-2
+            self.talent=5
+            self.luck=3
+        elif setting[1]=='Stella':
+            self.energy=8
+            self.money=700
+            self.health=60
+            self.strength=5
+            self.agility=4
+            self.wisdom=3
+            self.talent=2
+            self.luck=1
         elif setting[1]=='Tester':
             self.health=1
         elif setting[1]=='_____':
@@ -569,7 +596,7 @@ health..50   strength.3
 agility..3   wisdom...3
 talent...3   luck.....3
 
-Bob the strong
+Bob the healthy
 strong but foolish
 energy...7   money..500
 health.100   strength.7
@@ -597,12 +624,33 @@ health..40   strength.2
 agility..2   wisdom...2
 talent...4   luck....10
 
+Randy the ?
+random stats
+energy...?   money..???
+health..??   strength.?
+agility..?   wisdom...?
+talent...?   luck.....?
+
 Richard the rich
 rich but weak
 energy...4   money.3000
 health..30   strength.2
 agility..2   wisdom...4
-talent...3   luck....3
+talent...3   luck.....3
+
+Sonic the runner
+fast but foolish
+energy...5   money..300
+health..70   strength.2
+agility.13   wisdom..-2
+talent...5   luck.....3
+
+Stella the ?
+just for joke
+energy...8   money..700
+health..60   strength.5
+agility..4   wisdom...3
+talent...2   luck.....1
 
 
 background:level(1~7) (# means not ready)
