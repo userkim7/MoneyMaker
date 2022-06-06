@@ -2,7 +2,7 @@
 ### text_based game
 
 ---
-#### ***v0.1.1***
+### ***v0.1.1***
 ##### optimized the codes
 
 ##### more descriptions on help
@@ -12,7 +12,7 @@
   + 'W_' command bug
 
 
-#### ***v0.1***
+### ***v0.1***
 ##### 3 types added
   + 40-days
   + 80-days
@@ -24,5 +24,5 @@
   + Lucy the lucky
   + Richard the rich
 
-+ 1 background added
+##### 1 background added
   + village
