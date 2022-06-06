@@ -3,7 +3,7 @@
 
 #### v0.1
 
-**4 character**
++**4 character**
  +Alex the normal
  +Bob the strong
  +Lucy the lucky
