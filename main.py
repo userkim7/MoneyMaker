@@ -12,7 +12,7 @@ class game_set:
         self.luck=3
         
         self.type_list=['40-days','80-days','infinity']
-        self.character_list=['Alex','Bob','Lucy','Richard','Tester','_____']
+        self.character_list=['Alex','Bob','Emma','Genie','Lucy','Richard','Tester','_____']
         self.background_list=['village', #Lv1
                               'town','school', #Lv2
                               'farm','port','train', #Lv3
@@ -72,6 +72,24 @@ class game_set:
             self.wisdom=-3
             self.talent=0
             self.luck=1
+        elif setting[1]=='Emma':
+            self.energy=13
+            self.money=200
+            self.health=70
+            self.strength=5
+            self.agility=5
+            self.wisdom=2
+            self.talent=2
+            self.luck=0
+        elif setting[1]=='Genie':
+            self.energy=3
+            self.money=300
+            self.health=30
+            self.strength=2
+            self.agility=2
+            self.wisdom=13
+            self.talent=5
+            self.luck=4
         elif setting[1]=='Lucy':
             self.energy=3
             self.money=1000
@@ -557,6 +575,20 @@ energy...7   money..500
 health.100   strength.7
 agility..7   wisdom..-3
 talent...0   luck.....1
+
+Emma the energetic
+energetic but unlucky
+energy..13   money..200
+health..70   strength.5
+agility..5   wisdom...2
+talent...2   luck.....0
+
+Genie the smart
+smart but weak
+energy...3   money..300
+health..30   strength.2
+agility..2   wisdom..13
+talent...5   luck.....4
 
 Lucy the lucky
 lucky but weak
