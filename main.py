@@ -488,14 +488,15 @@ energy...-{List[0]}''')
                 user=''
                 print('\nincorrect input\n')
                 continue
-            if user[:2] not in self.command_list:
+            if user[:2] not in self.command_list or int(user[2:])<1:
                 print('\nincorrect input\n')
+                user=''
             elif user[:2]=='U_':
-                if int(user[2:])>ma.utility_num+1:
+                if int(user[2:])>ma.utility_num:
                     user=''
                     print('\nincorrect input\n')
             elif user[:2]=='W_':
-                if int(user[2:])>ma.work_num+1:
+                if int(user[2:])>ma.work_num:
                     user=''
                     print('\nincorrect input\n')
 
@@ -505,7 +506,7 @@ energy...-{List[0]}''')
         if gs.money<0:
             print(f'''
  ∧∧∧∧
-<backrupt>  You survived for {days}days.
+<backrupt>  You survived for {days}days
  ∨∨∨∨
 ''')
             return 1
@@ -543,25 +544,29 @@ infinity:test your luck
 
 character:different stats
 
-Alex:just as defalut
+Alex the normal
+just as defalut
 energy...5   money..500
 health..50   strength.3
 agility..3   wisdom...3
 talent...3   luck.....3
 
-Bob:strong but foolish
+Bob the strong
+strong but foolish
 energy...7   money..500
 health.100   strength.7
 agility..7   wisdom..-3
 talent...0   luck.....1
 
-Lucy:lucky but weak
+Lucy the lucky
+lucky but weak
 energy...3   money.1000
 health..40   strength.2
 agility..2   wisdom...2
 talent...4   luck....10
 
-Richard:rich but weak
+Richard the rich
+rich but weak
 energy...4   money.3000
 health..30   strength.2
 agility..2   wisdom...4
@@ -668,69 +673,46 @@ while True:
     ma=main()
     ma.help()
     ma.setting()
-    if gs.type_num==0:
-        run=True
-        days=1
-        while run:
-            if days%5==0:
-                tax=days*100
-            else:
-                tax=days*10    
-            print('')
-            print('-'*20)
-            print(days,'day',f'    tax...{tax}')
-            print('-'*20,end='')
-
-            ma.day()
-
-            if ma.rest:
-                print('\nYou are too tired to work today.')
-                gs.health+=10
-                if gs.health>=20:
-                    ma.rest=False
-            else:
-                gs.health+=int((ma.player_energy+1-gs.energy)/2)
-                
-            gs.money-=tax
-            print(f'\nmoney...-{tax}')
-            judge=ev.bankrupt(days)
-            if judge:
-                run=False
-                break
-            if days%5==0:
-                ev.choose_upgrade()
-            
-            days+=1
-            
+    run_list=[]
+    if not gs.type_num:
+        run_list.append(0)
     else:
-        for days in range(1,gs.type_num+1):
-            if days%5==0:
-                tax=days*100
-            else:
-                tax=days*10    
-            print('')
-            print('-'*20)
-            print(days,'day',f'    tax...{tax}')
-            print('-'*20,end='')
+        for _ in range(gs.type_num):
+            run_list.append(0)
+    days=1
+    for _ in run_list:
+        if days%5==0:
+            tax=days*100
+        else:
+            tax=days*10    
+        print('')
+        print('-'*20)
+        print(days,'day',f'    tax...{tax}')
+        print('-'*20,end='')
             
-            ma.day()
+        ma.day()
 
-            if ma.rest:
-                print('\nYou are too tired to work today.')
-                gs.health+=10
-                if gs.health>=20:
-                    ma.rest=False
-            else:
-                gs.health+=int((ma.player_energy+1-gs.energy)/2)
-                
-            gs.money-=tax
-            print(f'\nmoney...-{tax}')
-            judge=ev.bankrupt(days)
-            if judge:
-                break
-            if days%5==0:
-                ev.choose_upgrade()
-                
+        if ma.rest:
+            print('\nYou are too tired to work today.')
+            gs.health+=10
+            if gs.health>=20:
+                ma.rest=False
+        else:
+            gs.health+=int((ma.player_energy+1-gs.energy)/2)
+              
+        gs.money-=tax
+        print(f'\nmoney...-{tax}')
+        judge=ev.bankrupt(days)
+        if judge:
+            break
+        if days%5==0:
+            ev.choose_upgrade()
+
+        days+=1
+        if not gs.type_num:
+            run_list.append(0)
+
+    if days==gs.type_num:           
         print(f'''
 You have survived for {gs.type_num} days! 
 ''')
