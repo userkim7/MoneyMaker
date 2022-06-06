@@ -12,7 +12,7 @@ class game_set:
         self.luck=3
         
         self.type_list=['40-days','80-days','infinity']
-        self.character_list=['Alex','Bob','Emma','Genie','Lucy','Randy','Richard','Sonic','Stella','Tester','_____']
+        self.character_list=['Alex','Bob','Emma','Genie','Lucy','Randy','Reco','Richard','Sonic','Stella','Tester','_____']
         self.background_list=['village', #Lv1
                               'town','school', #Lv2
                               'farm','port','train', #Lv3
@@ -108,6 +108,15 @@ class game_set:
             self.wisdom=randint(1,5)
             self.talent=randint(1,5)
             self.luck=randint(1,5)
+        elif setting[1]=='Reco':
+            self.energy=1
+            self.money=1000
+            self.health=10
+            self.strength=-99
+            self.agility=-99
+            self.wisdom=999
+            self.talent=0
+            self.luck=0
         elif setting[1]=='Richard':
             self.energy=4
             self.money=3000
@@ -591,66 +600,73 @@ character:different stats
 
 Alex the normal
 just as defalut
-energy...5   money..500
-health..50   strength.3
-agility..3   wisdom...3
-talent...3   luck.....3
+energy....5   money...500
+health...50   strength..3
+agility...3   wisdom....3
+talent....3   luck......3
 
 Bob the healthy
 strong but foolish
-energy...7   money..500
-health.100   strength.7
-agility..7   wisdom..-3
-talent...0   luck.....1
+energy....7   money...500
+health..100   strength..7
+agility...7   wisdom...-3
+talent....0   luck......1
 
 Emma the energetic
 energetic but unlucky
-energy..13   money..200
-health..70   strength.5
-agility..5   wisdom...2
-talent...2   luck.....0
+energy...13   money...200
+health...70   strength..5
+agility...5   wisdom....2
+talent....2   luck......0
 
 Genie the smart
 smart but weak
-energy...3   money..300
-health..30   strength.2
-agility..2   wisdom..13
-talent...5   luck.....4
+energy....3   money...300
+health...30   strength..2
+agility...2   wisdom...13
+talent....5   luck......4
 
 Lucy the lucky
 lucky but weak
-energy...3   money.1000
-health..40   strength.2
-agility..2   wisdom...2
-talent...4   luck....10
+energy....3   money..1000
+health...40   strength..2
+agility...2   wisdom....2
+talent....4   luck.....10
 
 Randy the ?
 random stats
-energy...?   money..???
-health..??   strength.?
-agility..?   wisdom...?
-talent...?   luck.....?
+energy....?   money....???
+health...??   strength...?
+agility...?   wisdom.....?
+talent....?   luck.......?
+
+Reco the smartest
+just for joke
+energy....1   money..1000
+health...10   strength-99
+agility.-99   wisdom..999
+talent....0   luck......0
 
 Richard the rich
 rich but weak
-energy...4   money.3000
-health..30   strength.2
-agility..2   wisdom...4
-talent...3   luck.....3
+energy....4   money..3000
+health...30   strength..2
+agility...2   wisdom....4
+talent....3   luck......3
 
 Sonic the runner
 fast but foolish
-energy...5   money..300
-health..70   strength.2
-agility.13   wisdom..-2
-talent...5   luck.....3
+energy....5   money...300
+health...70   strength..2
+agility..13   wisdom...-2
+talent....5   luck......3
 
 Stella the ?
 just for joke
-energy...8   money..700
-health..60   strength.5
-agility..4   wisdom...3
-talent...2   luck.....1
+energy....8   money...700
+health...60   strength..5
+agility...4   wisdom....3
+talent....2   luck......1
 
 
 background:level(1~7) (# means not ready)
