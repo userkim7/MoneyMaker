@@ -2,6 +2,12 @@
 ### text_based game
 
 ---
+### ***v0.3.0***
+##### 3 characters added
+  + Randy the ?
+  + Sonic the runner
+  + Stella the ?
+
 ### ***v0.2.0***
 ##### 2 characters added
   + Emma the energetic
