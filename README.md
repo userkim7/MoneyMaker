@@ -2,6 +2,18 @@
 ### text_based game
 
 ---
+### ***v0.4.1***
+##### balance patch
+  + EnergyDrink_I +health 20->10
+  + EnergyDrink_II +health 50->25
+  + Health loss ++
+
+##### optimized the codes
+
+##### bugs fixed
+  + U_ command bug
+  + W_ command bug
+
 ### ***v0.4.0***
 ##### 1 characters added
   + Reco the smartest
