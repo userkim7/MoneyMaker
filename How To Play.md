@@ -92,39 +92,39 @@ background - Lv1~Lv7 (# means not ready)
 
 + recommended for beginner (Lv1~Lv2)
 
-    village(Lv1):cosy and relaxing
+    Village(Lv1):cosy and relaxing
 
-    #town(Lv2):busy but peaceful
+    #Town(Lv2):busy but peaceful
 
-    #school(Lv2):nice and famed school
+    #School(Lv2):nice and famed school
 
 + recommended for normal player (Lv3~Lv4)
 
-    #farm(Lv3):animal lover
+    #Farm(Lv3):animal lover
 
     #port(Lv3):out to sea
 
     #train(Lv3):no way to get off
 
-    #webcam(Lv4):attention please
+    #Webcam(Lv4):attention please
 
-    #club(Lv4):dance time
+    #Club(Lv4):dance time
 
-    #pub(Lv4):drick until morning
+    #Pub(Lv4):drick until morning
 
 + recommended for expert (Lv5~Lv6)
 
-    #bin(Lv5):deliquent school
+    #Bin(Lv5):deliquent school
 
-    #dungeon(Lv6):another world
+    #Dungeon(Lv6):another world
     
     #Spaceshuttle(Lv6):out to space
 
 + not recommended (Lv7+)
 
-    #downtown(Lv7):dark and the darkest town
+    #Downtown(Lv7):dark and the darkest town
 
-    #basement(Lv10):DO NOT ENTER
+    #Basement(Lv10):DO NOT ENTER
 
 
 
