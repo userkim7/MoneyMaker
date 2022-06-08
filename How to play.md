@@ -2,9 +2,49 @@
 
 ### Choose type
 
++ -days
+
+num-days->survive num days
+
++ Infinity
+
+test your luck
+
+### Choose level
+
++ Normal
+
+Default tax
+
++ Hard
+
+High-tax
+
++ Insane
+
+High-tax + n% of the earning
+
 ### Choose character
 
++ Alex the normal
++ Arina the artist
++ Bob the healthy
++ Emma the energetic
++ Fred the farmer
++ Genie the smart
++ Lucid the luckiest
++ Randy the ?
++ Reco the smartest
++ Richard the rich
++ Sonic the runner
++ Stella the ?
++ Winne the cheater
+
 ### Choose background
+
++ Village
+
+
 
 ### Use commands for gameplay
 
