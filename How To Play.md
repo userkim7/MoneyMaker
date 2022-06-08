@@ -88,16 +88,16 @@ item [ none ]
 
 ### Choose background
 
-background - Lv.1~Lv.7 (# means not ready)
+background - Lv1~Lv7 (# means not ready)
 
-+ recommended for beginner (Lv.1~Lv.2)
++ recommended for beginner (Lv1~Lv2)
     village(Lv1):cosy and relaxing
 
     #town(Lv2):busy but peaceful
 
     #school(Lv2):nice and famed school
 
-+ recommended for normal player (Lv.3~Lv.4)
++ recommended for normal player (Lv3~Lv4)
     #farm(Lv3):animal lover
 
     #port(Lv3):out to sea
@@ -110,12 +110,14 @@ background - Lv.1~Lv.7 (# means not ready)
 
     #pub(Lv4):drick until morning
 
-+ recommended for expert (Lv.5~Lv.6)
++ recommended for expert (Lv5~Lv6)
     #bin(Lv5):deliquent school
 
     #dungeon(Lv6):another world
+    
+    #Spaceshuttle(Lv6):out to space
 
-+ not recommended (Lv.7+)
++ not recommended (Lv7+)
     #downtown(Lv7):dark and the darkest town
 
     #basement(Lv10):DO NOT ENTER
