@@ -9,20 +9,28 @@ class game_set:
         self.agility=3
         self.wisdom=3
         self.talent=3
+        self.language=3
         self.luck=3
+        self.badluck=0
+        self.fame=50
+        self.item=[]
         
-        self.type_list=['40-days','80-days','infinity']
-        self.character_list=['Alex','Bob','Emma','Genie','Lucy','Randy','Reco','Richard','Sonic','Stella','Tester','_____']
-        self.background_list=['village', #Lv1
-                              'town','school', #Lv2
-                              'farm','port','train', #Lv3
-                              'webcam','club','pub', #Lv4
-                              'bin', #Lv5
-                              'dungeon', #Lv6
-                              'downtown', #Lv7
-                              'basement'] #Lv10
-
+        self.type_list=['-days','Infinity']
+        self.level_list=['Normal','Hard','Insane']
+        self.character_list=['Alex','Arina','Bob','Emma','Fred','Genie','Lucid','Lucy','Randy','Reco','Richard','Sonic','Stella','Winne','Tester','_____']
+        self.background_list=['Village', #Lv1
+                              'Town','School', #Lv2
+                              'Farm','Port','Train', #Lv3
+                              'Webcam','Club','Pub', #Lv4
+                              'Bin', #Lv5
+                              'Dungeon','Spaceshuttle', #Lv6
+                              'Downtown', #Lv7
+                              'Basement'] #Lv10
+        self.level=''
+        
         self.type_num=0
+        self.tax_mul=[10,100]
+        self.tax_add=[0,0]
         self.background_num=0
 
         self.utility_num=3
@@ -32,10 +40,25 @@ class game_set:
         setting=[]
         user=''
         
-        while user not in self.type_list:
+        while user not in self.type_list and user[len(user)-5:] not in self.type_list:
             user=input('choose type: ')
-            if user not in self.type_list:
+            try:
+                if user not in self.type_list:
+                    judge=int(user[:len(user)-5])
+                    if user[len(user)-5:] not in self.type_list:
+                        print('\nincorrect input\n')
+            except:
+                if user not in self.type_list:
+                    print('\nincorrect input\n')
+                    user=''
+
+        while user not in self.level_list:
+            user=input('choose level: ')
+            if user not in self.level_list:
                 print('\nincorrect input\n')
+
+        self.level=user
+                
         setting.append(user)
 
         while user not in self.character_list:
@@ -54,15 +77,30 @@ class game_set:
 
     def setting_game(self,setting):
 
-        if setting[0]=='40-days':
-            self.type_num=40
-        elif setting[0]=='80-days':
-            self.type_num=80
-        elif setting[0]=='infinity':
+        if setting[0][len(setting[0])-5:]=='-days':
+            self.type_num=int(setting[0][:len(setting[0])-5])
+        elif setting[0]=='Infinity':
             pass
+
+        if self.level=='Normal':
+            pass
+        elif self.level=='Hard':
+            self.tax_mul=[50,300]
+        elif self.level=='Insane':
+            self.tax_mul=[50,300]
+            self.tax_add=[10/100,15/100]
 
         if setting[1]=='Alex':
             pass
+        elif setting[1]=='Arina':
+            self.energy=3
+            self.money=100
+            self.health=10
+            self.strength=-99
+            self.agility=-99
+            self.wisdom=0
+            self.talent=99
+            self.luck=5
         elif setting[1]=='Bob':
             self.energy=7
             self.money=500
@@ -81,6 +119,15 @@ class game_set:
             self.wisdom=2
             self.talent=2
             self.luck=0
+        elif setting[1]=='Fred':
+            self.energy=7
+            self.money=300
+            self.health=70
+            self.strength=8
+            self.agility=5
+            self.wisdom=1
+            self.talent=5
+            self.luck=3
         elif setting[1]=='Genie':
             self.energy=3
             self.money=300
@@ -90,6 +137,15 @@ class game_set:
             self.wisdom=13
             self.talent=5
             self.luck=4
+        elif setting[1]=='Lucid':
+            self.energy=0
+            self.money=1000
+            self.health=100
+            self.strength=-99
+            self.agility=-99
+            self.wisdom=-99
+            self.talent=-99
+            self.luck=999
         elif setting[1]=='Lucy':
             self.energy=3
             self.money=1000
@@ -144,6 +200,16 @@ class game_set:
             self.wisdom=3
             self.talent=2
             self.luck=1
+        elif setting[1]=='Winne':
+            self.energy=20
+            self.money=10000
+            self.health=20
+            self.strength=10
+            self.agility=10
+            self.wisdom=10
+            self.talent=10
+            self.luck=10
+            self.item.append('Cheater`s Hat')
         elif setting[1]=='Tester':
             self.health=1
         elif setting[1]=='_____':
@@ -161,7 +227,7 @@ class game_set:
                 self.talent=999
                 self.luck=999
 
-        if setting[2]=='village':
+        if setting[2]=='Village':
             self.background=0
         else:
             print('\nnot ready...auto choose...village')
@@ -169,23 +235,8 @@ class game_set:
 
 class event:
     def __init__(self):
-        self.utility_list=[
-            ['EnergyDrink_I','EnergyDrink_I','EnergyDrink_II', 
-             'Recycle','Recycle','Lemonade','Lemonade','MowLawn', 
-             'Medicine_I','Medicine_II', 
-             'Weight_I','Weight_I','Weight_II', 
-             'Run_I','Run_I','Run_II', 
-             'Read_I','Read_I','Read_II', 
-             'Origami_I','Origami_I','Origami_II' 
-                ]
-            ]
-        self.work_list=[
-            ['Load_I','Load_I','Load_I','Load_II','Load_II','Load_III', 
-             'Mail_I','Mail_I','Mail_I','Mail_II','Mail_II','Mail_III', 
-             'Library_I','Library_I','Library_I','Library_II','Library_II','Library_III', 
-             'Curve_I','Curve_I','Curve_I','Curve_II','Curve_II','Curve_III' 
-                ]
-            ]
+        self.utility_list=[]
+        self.work_list=[]
         self.good_event_list=[
             ['PickMoney','PickClover','Party']
             ]
@@ -193,18 +244,33 @@ class event:
             ['DropMoney','Fire']
             ]
         self.upgrade_list=['Energy','Utility_board','Work_board','Stats','Luck']
+        self.item_list=[{'name':'Cheater`s Hat','durability':999}]
         self.command_list=['U_','W_']
+    def make_list(self):
+        if gs.background_num==0:
+            for _ in range(5): self.utility_list+=['Recycle'] #5
+            for _ in range(4): self.utility_list+=['EnergyDrink_I','Lemonade','Weight_I','Run_I','Read_I','Origami_I'] #4
+            for _ in range(3): self.utility_list+=['Medicine_I'] #3
+            for _ in range(2): self.utility_list+=['EnergyDrink_II','MowLawn','Weight_II','Run_II','Read_II','Origami_II','GoodNight','MakeBed'] #2
+            self.utility_list+=['Medicine_II'] #1
 
+            for _ in range(5): self.work_list+=['Load_I','Mail_I','Library_I','Curve_I'] #5
+            for _ in range(4): self.work_list+=[] #4
+            for _ in range(3): self.work_list+=['Load_II','Mail_II','Library_II','Curve_II'] #3
+            for _ in range(2): self.work_list+=[] #2
+            self.work_list+=['Load_III','Mail_III','Library_III','Curve_III'] #1
+            
     def choose_utility(self):
-        result=[]
+        result=[]           
+                
         for _ in range(gs.utility_num):
-            result.append(choice(self.utility_list[gs.background_num]))
+            result.append(choice(self.utility_list))
         return result
 
     def choose_work(self):
         result=[]
         for _ in range(gs.work_num):
-            result.append(choice(self.work_list[gs.background_num]))
+            result.append(choice(self.work_list))
         return result
 
     def choose_upgrade(self):
@@ -230,18 +296,17 @@ class event:
         self.upgrade_value(List[user-1])
         
     def choose_event(self):
-        List=[x for x in range(1,gs.luck+1)]
-        for _ in range(100):
-            List.append(0)
-        for i in range(len(List)):
+        List=[1 for x in range(gs.luck)]
+        List+=[0 for x in range((gs.luck+gs.badluck)*3)]
+        for i in range(gs.luck):
             if List[i]:
                 Luck=[]
                 for _ in range(gs.luck):
-                    Luck.append(choice(self.good_event_list))
-                for _ in range(gs.luck+1):
-                    Luck.append(choice(self.bad_event_list))
+                    Luck.append(choice(self.good_event_list[gs.background_num]))
+                for _ in range(gs.badluck):
+                    Luck.append(choice(self.bad_event_list[gs.background_num]))
                 List[i]=choice(Luck)
-        self.event_value(choice(List))        
+        self.event_value(choice(List))
         
     def utility_value(self,utility):
         if utility=='EnergyDrink_I':
@@ -376,92 +441,105 @@ energy...-{List[0]}''')
                 print('Scrap,scrap')
                 print(f'''talent...+{List[1]}
 energy...-{List[0]}''')
-                return 1           
-        
+                return 1
+        elif utility=='GoodNight':
+            List=[1]
+            ma.next_energy+=List[0]
+            print('Good Night!')
+            print(f'next_energy...+{List[0]}')
+            return 1
+        elif utility=='MakeBed':
+            List=[1,2]
+            ma.player_energy-=List[0]
+            ma.next_energy+=List[1]
+            print('Making bed!')
+            print(f'''next_energy...+{List[1]}
+energy...-{List[0]}''')
+            
     def work_value(self,work):
         if work=='Load_I':
             if gs.strength>=3 and ma.player_energy>=1:
                 ma.player_energy-=1
-                earn=round(gs.health*gs.strength/2)+self.tips(gs.strength)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.strength/8)+self.tips(gs.strength)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Load_II':
             if gs.strength>=7 and ma.player_energy>=2:
                 ma.player_energy-=2
-                earn=round(gs.health*gs.strength/1.7)+self.tips(gs.strength)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.strength/3.2)+self.tips(gs.strength)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Load_III':
             if gs.strength>=13 and ma.player_energy>=3:
                 ma.player_energy-=3
                 earn=round(gs.health*gs.strength/1.4)+self.tips(gs.strength)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Mail_I':
             if gs.agility>=3 and ma.player_energy>=1:
                 ma.player_energy-=1
-                earn=round(gs.health*gs.agility/2)+self.tips(gs.agility)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.agility/8)+self.tips(gs.agility)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Mail_II':
             if gs.agility>=7 and ma.player_energy>=2:
                 ma.player_energy-=2
-                earn=round(gs.health*gs.agility/1.7)+self.tips(gs.agility)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.agility/3.2)+self.tips(gs.agility)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Mail_III':
             if gs.agility>=13 and ma.player_energy>=3:
                 ma.player_energy-=3
                 earn=round(gs.health*gs.agility/1.4)+self.tips(gs.agility)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Library_I':
             if gs.wisdom>=3 and ma.player_energy>=1:
                 ma.player_energy-=1
-                earn=round(gs.health*gs.wisdom/2)+self.tips(gs.wisdom)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.wisdom/8)+self.tips(gs.wisdom)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Library_II':
             if gs.wisdom>=7 and ma.player_energy>=2:
                 ma.player_energy-=1
-                earn=round(gs.health*gs.wisdom/1.7)+self.tips(gs.wisdom)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.wisdom/3.2)+self.tips(gs.wisdom)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Library_III':
             if gs.wisdom>=13 and ma.player_energy>=3:
                 ma.player_energy-=3
                 earn=round(gs.health*gs.wisdom/1.4)+self.tips(gs.wisdom)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Curve_I':
             if gs.talent>=3 and ma.player_energy>=1:
                 ma.player_energy-=1
-                earn=round(gs.health*gs.talent/2)+self.tips(gs.talent)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.talent/8)+self.tips(gs.talent)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Curve_II':
             if gs.talent>=7 and ma.player_energy>=2:
                 ma.player_energy-=2
-                earn=round(gs.health*gs.talent/1.7)+self.tips(gs.talent)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                earn=round(gs.health*gs.talent/3.2)+self.tips(gs.talent)
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
         elif work=='Curve_III':
             if gs.talent>=13 and ma.player_energy>=3:
                 ma.player_energy-=3
                 earn=round(gs.health*gs.talent/1.4)+self.tips(gs.talent)
-                gs.money+=earn
-                print(f'money...+{earn}')
+                ma.earn+=earn
+                print(f'earn...+{earn}')
                 return 1
             
     def upgrade_value(self,upgrade):
@@ -481,8 +559,9 @@ energy...-{List[0]}''')
             gs.luck+=3
 
     def event_value(self,Event):
+        print('')
         if Event=='PickMoney':
-            earn=randint(30*gs.luck,31*gs.luck)
+            earn=randint(30+3*gs.luck,30+4*gs.luck)
             gs.money+=earn
             print(f'You picked money!    money...+{earn}')
         elif Event=='PickClover':
@@ -507,7 +586,8 @@ energy...-{List[0]}''')
             if gs.luck<100:
                 loss=randint(3*(100-gs.luck),4*(100-gs.luck))
                 gs.money-=loss
-                print(f'You dropped money!    money...-{loss}')
+                pr
+                int(f'You dropped money!    money...-{loss}')
             else:
                 print(f'You dropped money,but someone picked it up for you!    money...-0')
         elif Event=='Fire':
@@ -517,6 +597,9 @@ energy...-{List[0]}''')
                 print(f'Your house is on fire!    money...-{loss}')
             else:
                 print(f'Your house is on fire,but someone helped you turn off the fire!    money...-0')
+        else:
+            print('Noting happend tonight')
+        print('')
                 
     def tips(self,stat):
         result=0
@@ -573,135 +656,10 @@ class main:
         self.days=1
         self.player_energy=0
         self.next_energy=0
+        self.next_health=0
+        self.earn=0
         self.rest=False
         
-    def help(self):
-        user=''
-        while not user:
-            user=input('help? (y/n): ')
-            if user not in ['y','n']:
-                print('\nincorrect input\n')
-                user=''
-                
-        if user=='y':
-            print('''
-Type:gamemode
-
-40-days:survive for 40 days
-
-80-days:survive for 80 days
-
-infinity:test your luck
-
-
-character:different stats
-
-Alex the normal
-just as defalut
-energy....5   money...500
-health...50   strength..3
-agility...3   wisdom....3
-talent....3   luck......3
-
-Bob the healthy
-strong but foolish
-energy....7   money...500
-health..100   strength..7
-agility...7   wisdom...-3
-talent....0   luck......1
-
-Emma the energetic
-energetic but unlucky
-energy...13   money...200
-health...70   strength..5
-agility...5   wisdom....2
-talent....2   luck......0
-
-Genie the smart
-smart but weak
-energy....3   money...300
-health...30   strength..2
-agility...2   wisdom...13
-talent....5   luck......4
-
-Lucy the lucky
-lucky but weak
-energy....3   money..1000
-health...40   strength..2
-agility...2   wisdom....2
-talent....4   luck.....10
-
-Randy the ?
-random stats
-energy....?   money....???
-health...??   strength...?
-agility...?   wisdom.....?
-talent....?   luck.......?
-
-Reco the smartest
-just for joke
-energy....1   money..1000
-health...10   strength-99
-agility.-99   wisdom..999
-talent....0   luck......0
-
-Richard the rich
-rich but weak
-energy....4   money..3000
-health...30   strength..2
-agility...2   wisdom....4
-talent....3   luck......3
-
-Sonic the runner
-fast but foolish
-energy....5   money...300
-health...70   strength..2
-agility..13   wisdom...-2
-talent....5   luck......3
-
-Stella the ?
-just for joke
-energy....8   money...700
-health...60   strength..5
-agility...4   wisdom....3
-talent....2   luck......1
-
-
-background:level(1~7) (# means not ready)
-
-recommended for beginner
-    village(Lv1):cosy and relaxing
-
-    #town(Lv2):busy but peaceful
-
-    #school(Lv2):nice and famed school
-
-recommended for normal player
-    #farm(Lv3):animal lover
-
-    #port(Lv3):out to sea
-
-    #train(Lv3):no way to get off
-
-    #webcam(Lv4):attention please
-
-    #club(Lv4):dance time
-
-    #pub(Lv4):drick until morning
-
-recommended for expert
-    #bin(Lv5):deliquent school
-
-    #dungeon(Lv6):another world
-
-not recommended
-    #downtown(Lv7):dark and the darkest town
-
-    #basement(Lv10):DO NOT ENTER
-
-
-''')
-            
     def setting(self):
         setting=gs.before_start()
         gs.setting_game(setting)
@@ -716,6 +674,8 @@ not recommended
         List_W=ev.choose_work()
         self.player_energy=gs.energy+self.next_energy
         self.next_energy=0
+        gs.health+=self.next_health
+        self.next_health=0
         while not user=='Nextday':
             print('')
             print('0'*20)
@@ -759,14 +719,15 @@ luck: {gs.luck}''')
                     List_W[user[1]]=''
                 else:
                     print('not available')
+        gs.money+=self.earn
 
 #play
 while True:
     gs=game_set()
     ev=event()
     ma=main()
-    ma.help()
     ma.setting()
+    ev.make_list()
     run_list=[]
     if not gs.type_num:
         run_list.append(0)
@@ -775,13 +736,12 @@ while True:
             run_list.append(0)
     days=1
     for _ in run_list:
-        if days%5==0:
-            tax=days*100
-        else:
-            tax=days*10    
         print('')
         print('-'*20)
-        print(days,'day',f'    tax...{tax}')
+        if days%5==0:
+            print(days,'day',f'    tax...{days*gs.tax_mul[1]}+{gs.tax_add[1]*100}%')
+        else:
+            print(days,'day',f'    tax...{days*gs.tax_mul[0]}+{gs.tax_add[0]*100}%')
         print('-'*20,end='')
             
         ma.day()
@@ -793,12 +753,20 @@ while True:
                 ma.rest=False
         else:
             gs.health+=int((ma.player_energy+1-gs.energy)/1.2)
-              
-        gs.money-=tax
-        print(f'\nmoney...-{tax}')
+
         judge=ev.bankrupt(days)
         if judge:
             break
+        
+        if days%5==0: 
+            tax=int(days*gs.tax_mul[1]+ma.earn*gs.tax_add[1])
+        else:
+            tax=int(days*gs.tax_mul[0]+ma.earn*gs.tax_add[0])
+        gs.money-=tax
+        print(f'\nmoney...-{tax}')
+        ma.earn=0
+        
+        ev.choose_event()
         if days%5==0:
             ev.choose_upgrade()
 
