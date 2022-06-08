@@ -3,6 +3,9 @@
 
 ---
 ### ***v1.0.0***
+
+#### deleted help
+
 #### improved types
   + 40-days,80-days -> num-days
 
@@ -73,6 +76,8 @@
       
   + Work earn  Right away->End of the day
   + event rate +++
+
+#### optimized the codes
 
 #### bug fixed
   + event bug
