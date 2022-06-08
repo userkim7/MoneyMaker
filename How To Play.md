@@ -79,6 +79,7 @@ item [ none ]
 + Fred the farmer
 + Genie the smart
 + Lucid the luckiest
++ Lucy the lucky
 + Randy the ?
 + Reco the smartest
 + Richard the rich
