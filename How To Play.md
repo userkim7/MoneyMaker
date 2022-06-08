@@ -1,5 +1,5 @@
 # How To Play
-===
+
 
 ### Choose type
 
