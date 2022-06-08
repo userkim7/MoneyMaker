@@ -2,11 +2,86 @@
 ### text_based game
 
 ---
+### ***v1.0.0***
+#### improved types
+  + 40-days,80-days -> num-days
+
+#### 3 levels added
+  + Normal
+  + Hard
+  + Insane
+
+#### 4 characters added
+  + Arina the artist
+  + Fred the farmer
+  + Lucid the luckiest
+  + Winne the cheater
+
+#### 4 stats added
+  + language
+  + badluck
+  + fame
+  + item
+
+#### 1 item added
+  + Cheater`s Hat
+
+#### 2 utilitys added
+  + GoodNight
+  + MakeBed
+
+#### balance patch
+  + Utility board appear rate
+    + Village
+      + EnergyDrink_I ++
+      + EnergyDrink_II +
+      + Recycle +++
+      + Lemonade ++
+      + MowLawn +
+      + Medicine_I --
+      + Medicine_II ---
+      + Weight_I ++
+      + Weight_II +
+      + Run_I ++
+      + Run_II +
+      + Read_I ++
+      + Read_II +
+      + Origami_I ++
+      + Origami_II +
+
+  + Work board appear rate
+    + Village
+      + Load_I +
+      + Load_III -
+      + Mail_I +
+      + Mail_III -
+      + Library_I +
+      + Library_III -
+      + Curve_I +
+      + Curve_III -
+
+  + Work earning rate
+    + Village
+      +  Load_I ---
+      +  Load_II --
+      +  Mail_I ---
+      +  Mail_II --
+      +  Library_I ---
+      +  Library_II --
+      +  Curve_I ---
+      +  Curve_II --
+      
+  + Work earn  Right away->End of the day
+  + event rate +++
+
+#### bug fixed
+  + event bug
+
 ### ***v0.4.1***
 #### balance patch
-  + EnergyDrink_I +health 20->10
-  + EnergyDrink_II +health 50->25
-  + Health loss ++
+  + EnergyDrink_I +health --
+  + EnergyDrink_II +health ---
+  + Health loss +
 
 #### optimized the codes
 
@@ -43,7 +118,7 @@
 #### 3 types added
   + 40-days
   + 80-days
-  + infinity
+  + Infinity
 
 #### 4 characters added
   + Alex the normal
@@ -52,4 +127,4 @@
   + Richard the rich
 
 #### 1 background added
-  + village
+  + Village
