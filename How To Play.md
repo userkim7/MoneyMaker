@@ -37,7 +37,7 @@ agility......3 &nbsp;&nbsp;&nbsp; wisdom........3
 
 talent.......3 &nbsp;&nbsp;&nbsp; language......3
 
-luck.........3 &nbsp;&nbsp;&nbsp; badluck.......0
+luck.........3 &nbsp;&nbsp;&nbsp; badluck.......3
 
 fame........50   
 
@@ -53,11 +53,11 @@ agility....-99 &nbsp;&nbsp;&nbsp; wisdom........0
 
 talent......99 &nbsp;&nbsp;&nbsp; language......3
 
-luck.........5 &nbsp;&nbsp;&nbsp; badluck.......0
+luck.........5 &nbsp;&nbsp;&nbsp; badluck.......3
 
 fame........50   
 
-item [ none ]
+item [ Scissor ]
 
 + Bob the healthy
 
@@ -69,7 +69,7 @@ agility...0000 &nbsp;&nbsp;&nbsp; wisdom.....0000
 
 talent....0000 &nbsp;&nbsp;&nbsp; language......3
 
-luck.......000 &nbsp;&nbsp;&nbsp; badluck.......0
+luck.......000 &nbsp;&nbsp;&nbsp; badluck.......3
 
 fame........50   
 
@@ -85,6 +85,7 @@ item [ none ]
 + Richard the rich
 + Sonic the runner
 + Stella the ?
++ Steve the student
 + Winne the cheater
 
 ### Choose background
