@@ -279,7 +279,7 @@ class event:
                         {'name':'Glasses','stats':{'durability':10,'wisdom':1,'talent':1,'health':-1},'price':700},
                         {'name':'Scissor','stats':{'durability':3,'talent':2},'price':400},
                         {'name':'Mushroom','stats':{'durability':1,'health':10,'strength':5,'agility':-5},'price':1000},
-                        {'name':'clover','stats':{'durability':7,'luck':7,'badluck':-7},'price':3333}
+                        {'name':'lover','stats':{'durability':7,'luck':7,'badluck':-7},'price':3333}
                         ]
         self.command_list=['U_','W_']
 
