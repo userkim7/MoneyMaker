@@ -2,6 +2,47 @@
 ### text_based game
 
 ---
+### ***v2.0.0***
+
+#### store added
+
+#### 1 character added
+  + Steve the student
+
+#### 1 event added
+  + TakeMushroom
+
+#### 1 upgrade added
+  + Store board
+
+#### 14 items added
+  + MoonStone
+  + Linger
+  + NoteBook
+  + Dictionary
+  + Adronalin
+  + WierdMushroom
+  + Sneakers
+  + Booster
+  + Translater
+  + Hammer
+  + Glasses
+  + Scissor
+  + Mushroom
+  + Clover
+
+#### balance patch
+  + all character badluck ++
+  + Arina item(Scissor) added
+  + Randy language ?
+  + Randy badluck ?
+  + Randy item(WierdMushroom) added
+  + Winne health --
+  + Cheater`s Hat durability ---
+  + event happening sequences
+
+#### optimized the codes
+
 ### ***v1.0.0***
 
 #### deleted help
