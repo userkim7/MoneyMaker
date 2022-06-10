@@ -4,6 +4,26 @@
 ---
 ### ***v2.0.0***
 
+#### 4 utilities added
+  + Talk_I
+  + Talk_II
+  + Volunteer
+  + Steal
+
+#### 3 works added
+  + Speach_I
+  + Speach_II
+  + Speach_III
+
+#### balance patched
+  + all characters fame ---
+  + Winne money ---
+  + all works earning +++
+
+#### optimized the code greatly
+
+### ***v2.0.0***
+
 #### store added
 
 #### 1 character added
@@ -32,7 +52,7 @@
   + Clover
 
 #### balance patch
-  + all character badluck ++
+  + all characters badluck ++
   + Arina item(Scissor) added
   + Randy language ?
   + Randy badluck ?
@@ -70,7 +90,7 @@
 #### 1 item added
   + Cheater`s Hat
 
-#### 2 utilitys added
+#### 2 utilities added
   + GoodNight
   + MakeBed
 
