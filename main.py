@@ -19,7 +19,23 @@ class game_set:
         
         self.type_list=['-days','Infinity']
         self.level_list=['Normal','Hard','Insane']
-        self.character_list=['Alex','Arina','Bob','Emma','Fred','Genie','Lucid','Lucy','Randy','Reco','Richard','Sonic','Stella','Steve','Winne','Tester','_____']
+        self.character_list=[{'name':'Alex','stats':{'energy':5,'money':500,'health':50,'strength':3,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Arina','stats':{'energy':3,'money':100,'health':10,'strength':-99,'agility':-99,'wisdom':0,'talent':99,'language':3,'luck':5,'badluck':3,'fame':0,'item':['Scissor']}},
+                             {'name':'Bob','stats':{'energy':7,'money':500,'health':100,'strength':7,'agility':7,'wisdom':-3,'talent':0,'language':3,'luck':1,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Emma','stats':{'energy':13,'money':200,'health':70,'strength':5,'agility':5,'wisdom':2,'talent':2,'language':3,'luck':0,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Fred','stats':{'energy':7,'money':300,'health':70,'strength':8,'agility':5,'wisdom':1,'talent':5,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Genie','stats':{'energy':3,'money':300,'health':30,'strength':2,'agility':2,'wisdom':13,'talent':5,'language':3,'luck':4,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Lucid','stats':{'energy':0,'money':1000,'health':100,'strength':-99,'agility':-99,'wisdom':-99,'talent':-99,'language':3,'luck':999,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Lucy','stats':{'energy':3,'money':1000,'health':40,'strength':2,'agility':2,'wisdom':2,'talent':4,'language':3,'luck':10,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Randy','stats':{'energy':randint(1,9),'money':randint(100,900),'health':randint(10,90),'strength':randint(1,5),'agility':randint(1,5),'wisdom':randint(1,5),'talent':randint(1,5),'language':randint(1,5),'luck':randint(1,5),'badluck':randint(1,5),'fame':0,'item':['WierdMushroom']}},
+                             {'name':'Reco','stats':{'energy':1,'money':1000,'health':10,'strength':-99,'agility':-99,'wisdom':999,'talent':0,'language':3,'luck':0,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Richard','stats':{'energy':4,'money':3000,'health':30,'strength':2,'agility':2,'wisdom':4,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Sonic','stats':{'energy':5,'money':300,'health':70,'strength':2,'agility':13,'wisdom':-2,'talent':5,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Stella','stats':{'energy':8,'money':700,'health':60,'strength':5,'agility':4,'wisdom':3,'talent':2,'language':3,'luck':1,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Steve','stats':{'energy':5,'money':300,'health':30,'strength':2,'agility':4,'wisdom':7,'talent':3,'language':3,'luck':0,'badluck':5,'fame':0,'item':['Glasses']}},
+                             {'name':'Winne','stats':{'energy':20,'money':5000,'health':10,'strength':10,'agility':10,'wisdom':10,'talent':10,'language':3,'luck':10,'badluck':3,'fame':50,'item':['Cheater`s Hat']}},
+                             {'name':'Tester','stats':{'energy':3,'money':30,'health':30,'strength':0,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             ]
         self.background_list=['Village', #Lv1
                               'Town','School', #Lv2
                               'Farm','Port','Train', #Lv3
@@ -29,6 +45,7 @@ class game_set:
                               'Downtown', #Lv7
                               'Basement'] #Lv10
         self.level=''
+        self.character={}
         
         self.type_num=0
         self.tax_mul=[10,100]
@@ -64,11 +81,19 @@ class game_set:
                 
         setting.append(user)
 
-        while user not in self.character_list:
+        run=True
+        character={}
+
+        while run:
             user=input('choose character: ')
-            if user not in self.character_list:
+            for Dict in self.character_list:
+                if user in Dict['name']:
+                    self.character=Dict
+                    run=False
+                    break
+            if run:
                 print('\nincorrect input\n')
-        setting.append(user)
+        setting.append(0)
 
         while user not in self.background_list:
             user=input('choose background: ')
@@ -93,157 +118,17 @@ class game_set:
             self.tax_mul=[50,300]
             self.tax_add=[10/100,15/100]
 
-        if setting[1]=='Alex':
-            pass
-        elif setting[1]=='Arina':
-            self.energy=3
-            self.money=100
-            self.health=10
-            self.strength=-99
-            self.agility=-99
-            self.wisdom=0
-            self.talent=99
-            self.luck=5
-            self.item.append('Scissor')
-        elif setting[1]=='Bob':
-            self.energy=7
-            self.money=500
-            self.health=100
-            self.strength=7
-            self.agility=7
-            self.wisdom=-3
-            self.talent=0
-            self.luck=1
-        elif setting[1]=='Emma':
-            self.energy=13
-            self.money=200
-            self.health=70
-            self.strength=5
-            self.agility=5
-            self.wisdom=2
-            self.talent=2
-            self.luck=0
-        elif setting[1]=='Fred':
-            self.energy=7
-            self.money=300
-            self.health=70
-            self.strength=8
-            self.agility=5
-            self.wisdom=1
-            self.talent=5
-            self.luck=3
-        elif setting[1]=='Genie':
-            self.energy=3
-            self.money=300
-            self.health=30
-            self.strength=2
-            self.agility=2
-            self.wisdom=13
-            self.talent=5
-            self.luck=4
-        elif setting[1]=='Lucid':
-            self.energy=0
-            self.money=1000
-            self.health=100
-            self.strength=-99
-            self.agility=-99
-            self.wisdom=-99
-            self.talent=-99
-            self.luck=999
-        elif setting[1]=='Lucy':
-            self.energy=3
-            self.money=1000
-            self.health=40
-            self.strength=2
-            self.agility=2
-            self.wisdom=2
-            self.talent=4
-            self.luck=10
-        elif setting[1]=='Randy':
-            self.energy=randint(1,9)
-            self.money=randint(100,900)
-            self.health=randint(10,90)
-            self.strength=randint(1,5)
-            self.agility=randint(1,5)
-            self.wisdom=randint(1,5)
-            self.talent=randint(1,5)
-            self.language=randint(1,5)
-            self.luck=randint(1,5)
-            self.badluck=randint(1,5)
-            self.item.append('WierdMushroom')
-        elif setting[1]=='Reco':
-            self.energy=1
-            self.money=1000
-            self.health=10
-            self.strength=-99
-            self.agility=-99
-            self.wisdom=999
-            self.talent=0
-            self.luck=0
-        elif setting[1]=='Richard':
-            self.energy=4
-            self.money=3000
-            self.health=30
-            self.strength=2
-            self.agility=2
-            self.wisdom=4
-            self.talent=3
-            self.luck=3
-        elif setting[1]=='Sonic':
-            self.energy=5
-            self.money=300
-            self.health=70
-            self.strength=2
-            self.agility=13
-            self.wisdom=-2
-            self.talent=5
-            self.luck=3
-        elif setting[1]=='Stella':
-            self.energy=8
-            self.money=700
-            self.health=60
-            self.strength=5
-            self.agility=4
-            self.wisdom=3
-            self.talent=2
-            self.luck=1
-        elif setting[1]=='Steve':
-            self.energy=5
-            self.money=300
-            self.health=30
-            self.strength=2
-            self.agility=4
-            self.wisdom=7
-            self.talent=3
-            self.luck=0
-            self.badluck=5
-            self.item.append('Glasses')
-        elif setting[1]=='Winne':
-            self.energy=20
-            self.money=10000
-            self.health=10
-            self.strength=10
-            self.agility=10
-            self.wisdom=10
-            self.talent=10
-            self.luck=10
-            self.item.append('Cheater`s Hat')
-        elif setting[1]=='Tester':
-            self.money=1
-        elif setting[1]=='_____':
-            try:
-                user=int(input('code: ')) #1590
-            except:
-                pass
-            if user==1590: 
-                self.energy=999
-                self.money=99999
-                self.health=9999
-                self.strength=999
-                self.agility=999
-                self.wisdom=999
-                self.talent=999
-                self.luck=999
+        self.energy=self.character['stats']['energy']
+        self.money=self.character['stats']['money']
+        self.health=self.character['stats']['health']
+        self.strength=self.character['stats']['strength']
+        self.agility=self.character['stats']['agility']
+        self.wisdom=self.character['stats']['wisdom']
+        self.talent=self.character['stats']['talent']
+        self.language=self.character['stats']['language']
+        self.luck=self.character['stats']['luck']
+        self.badluck=self.character['stats']['badluck']
+        self.item+=self.character['stats']['item']
 
         for item in self.item:
             ev.bag(item)
@@ -291,17 +176,83 @@ class event:
     
     def make_list(self):
         if gs.background_num==0:
-            for _ in range(5): self.utility_list+=['Recycle'] #5
-            for _ in range(4): self.utility_list+=['EnergyDrink_I','Lemonade','Weight_I','Run_I','Read_I','Origami_I'] #4
-            for _ in range(3): self.utility_list+=['Medicine_I'] #3
-            for _ in range(2): self.utility_list+=['EnergyDrink_II','MowLawn','Weight_II','Run_II','Read_II','Origami_II','GoodNight','MakeBed'] #2
-            self.utility_list+=['Medicine_II'] #1
+            for _ in range(5): self.utility_list+=[{'name':'Recycle','stats':{'money':[50]}}
+                                                   ] 
+            for _ in range(4): self.utility_list+=[{'name':'EnergyDrink_I','stats':{'energy':[1],'money':[-100]}},
+                                                   {'name':'Lemonade','stats':{'energy':[-1],'money':[150]}},
+                                                   {'name':'Weight_I','stats':{'energy':[-1],'strength':[1]}},
+                                                   {'name':'Run_I','stats':{'energy':[-1],'agility':[1]}},
+                                                   {'name':'Read_I','stats':{'energy':[-1],'wisdom':[1]}},
+                                                   {'name':'Origami_I','stats':{'energy':[-1],'talent':[1]}},
+                                                   {'name':'Talk_I','stats':{'energy':[-1],'language':[1]}}
+                                                   ] 
+            for _ in range(3): self.utility_list+=[{'name':'Medicine_I','stats':{'money':[-200],'health':[10]}}
+                                                   ] 
+            for _ in range(2): self.utility_list+=[{'name':'EnergyDrink_II','stats':{'energy':[2],'money':[-100]}},
+                                                   {'name':'MowLawn','stats':{'energy':[-2],'money':[350]}},
+                                                   {'name':'Weight_II','stats':{'energy':[-2],'strength':[2]}},
+                                                   {'name':'Run_II','stats':{'energy':[-2],'agility':[2]}},
+                                                   {'name':'Read_II','stats':{'energy':[-2],'wisdom':[2]}},
+                                                   {'name':'Origami_II','stats':{'energy':[-2],'talent':[2]}},
+                                                   {'name':'Talk_II','stats':{'energy':[-2],'language':[2]}},
+                                                   {'name':'GoodNight','stats':{'next_energy':[1]}},
+                                                   {'name':'MakeBed','stats':{'energy':[-1],'next_energy':[2]}},
+                                                   {'name':'Volunteer','stats':{'energy':[-1],'money':[-100],'fame':[1]}},
+                                                   {'name':'Steal','stats':{'energy':[-1],'money':[300],'fame':[-1]}}
+                                                   ] 
+            self.utility_list+=[{'name':'Medicine_II','stats':{'money':[-400],'health':[25]}}
+                                ] 
 
-            for _ in range(5): self.work_list+=['Load_I','Mail_I','Library_I','Curve_I'] #5
-            for _ in range(4): self.work_list+=[] #4
-            for _ in range(3): self.work_list+=['Load_II','Mail_II','Library_II','Curve_II'] #3
-            for _ in range(2): self.work_list+=[] #2
-            self.work_list+=['Load_III','Mail_III','Library_III','Curve_III'] #1
+            for _ in range(5): self.work_list+=[{'name':'Load_I','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/4)+self.tips(gs.strength+ma.strength)
+                                                                                  ],
+                                                                          'energy':[-1],'strength':[3]}},
+                                                {'name':'Mail_I','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/4)+self.tips(gs.agility+ma.agility)
+                                                                                  ],
+                                                                          'energy':[-1],'agility':[3]}},
+                                                {'name':'Library_I','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/4)+self.tips(gs.wisdom+ma.wisdom)
+                                                                                  ],
+                                                                          'energy':[-1],'wisdom':[3]}},
+                                                {'name':'Curve_I','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/4)+self.tips(gs.talent+ma.talent)
+                                                                                  ],
+                                                                          'energy':[-1],'talent':[3]}},
+                                                {'name':'Speach_I','stats':{'earn':[round(gs.health*(gs.language+ma.language)/4)+self.tips(gs.language+ma.language)
+                                                                                  ],
+                                                                          'energy':[-1],'language':[3]}}
+                                                ] 
+            for _ in range(4): self.work_list+=[] 
+            for _ in range(3): self.work_list+=[{'name':'Load_II','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/1.8)+self.tips(gs.strength+ma.strength)
+                                                                                  ],
+                                                                          'energy':[-2],'strength':[7]}},
+                                                {'name':'Mail_II','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/1.8)+self.tips(gs.agility+ma.agility)
+                                                                                  ],
+                                                                          'energy':[-2],'agility':[7]}},
+                                                {'name':'Library_II','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/1.8)+self.tips(gs.wisdom+ma.wisdom)
+                                                                                  ],
+                                                                          'energy':[-2],'wisdom':[7]}},
+                                                {'name':'Curve_II','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.8)+self.tips(gs.talent+ma.talent)
+                                                                                  ],
+                                                                          'energy':[-2],'talent':[7]}},
+                                                {'name':'Speach_II','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.8)+self.tips(gs.language+ma.language)
+                                                                                  ],
+                                                                          'energy':[-2],'language':[7]}}
+                                                ] 
+            for _ in range(2): self.work_list+=[] 
+            self.work_list+=[{'name':'Load_III','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/1.2)+self.tips(gs.strength+ma.strength)
+                                                                                  ],
+                                                                          'energy':[-3],'strength':[13]}},
+                             {'name':'Mail_III','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/1.2)+self.tips(gs.agility+ma.agility)
+                                                                                  ],
+                                                                          'energy':[-3],'agility':[13]}},
+                             {'name':'Library_III','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/1.2)+self.tips(gs.wisdom+ma.wisdom)
+                                                                                  ],
+                                                                          'energy':[-3],'wisdom':[13]}},
+                             {'name':'Curve_III','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.2)+self.tips(gs.talent+ma.talent)
+                                                                                  ],
+                                                                          'energy':[-3],'talent':[13]}},
+                             {'name':'Speach_III','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.2)+self.tips(gs.language+ma.language)
+                                                                                  ],
+                                                                          'energy':[-3],'language':[13]}}
+                             ] 
             
     def choose_utility(self):
         return [choice(self.utility_list) for x in range(gs.utility_num)]
@@ -354,234 +305,43 @@ class event:
         return result
         
     def utility_value(self,utility):
-        if utility=='EnergyDrink_I':
-            List=[100,1]
-            if gs.money>=List[0]:
-                gs.money-=List[0]
-                ma.player_energy+=List[1]
-                print('Gulp,glup')
-                print(f'energy...+{List[1]}\nmoney...-{List[0]}')
-                return 1
-        elif utility=='EnergyDrink_II':
-            List=[200,2]
-            if gs.money>=List[0]:
-                gs.money-=List[0]
-                ma.player_energy+=List[1]
-                print('Gulp,glup')
-                print(f'energy...+{List[1]}\nmoney...-{List[0]}')
-                return 1
-        elif utility=='Recycle':
-            List=[50]
-            gs.money+=List[0]
-            print('Tang,tang')
-            print(f'money...+{List[0]}')
-            return 1
-        elif utility=='Lemonade':
-            List=[1,150]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.money+=List[1]
-                print('Sweet Lemonade!')
-                print(f'money...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='MowLawn':
-            List=[2,350]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.money+=List[1]
-                print('Grrrrrrrrrrrr')
-                print(f'money...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Medicine_I':
-            List=[200,10]
-            if gs.money>=List[0]:
-                gs.money-=List[0]
-                gs.health+=List[1]
-                print('Ow,oww')
-                print(f'health...+{List[1]}\nmoney...-{List[0]}')
-                return 1
-        elif utility=='Medicine_II':
-            List=[400,25]
-            if gs.money>=List[0]:
-                gs.money-=List[0]
-                gs.health+=List[1]
-                print('Ow,oww')
-                print(f'health...+{List[1]}\nmoney...-{List[0]}')
-                return 1
-        elif utility=='Weight_I':
-            List=[1,1]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.strength+=List[1]
-                print('Happp')
-                print(f'strength...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Weight_II':
-            List=[2,2]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.strength+=List[1]
-                print('Happp')
-                print(f'strength...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Run_I':
-            List=[1,1]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.agility+=List[1]
-                print('Huf,huf')
-                print(f'agility...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Run_II':
-            List=[2,2]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.agility+=List[1]
-                print('Huf,huf')
-                print(f'agility...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Read_I':
-            List=[1,1]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.wisdom+=List[1]
-                print('......')
-                print(f'wisdom...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Read_II':
-            List=[2,2]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.wisdom+=List[1]
-                print('......')
-                print(f'wisdom...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-            return 0
-        elif utility=='Origami_I':
-            List=[1,1]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.talent+=List[1]
-                print('Scrap,scrap')
-                print(f'talent...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='Origami_II':
-            List=[2,2]
-            if ma.player_energy>=List[0]:
-                ma.player_energy-=List[0]
-                gs.talent+=List[1]
-                print('Scrap,scrap')
-                print(f'talent...+{List[1]}\nenergy...-{List[0]}')
-                return 1
-        elif utility=='GoodNight':
-            List=[1]
-            ma.next_energy+=List[0]
-            print('Good Night!')
-            print(f'next_energy...+{List[0]}')
-            return 1
-        elif utility=='MakeBed':
-            List=[1,2]
-            ma.player_energy-=List[0]
-            ma.next_energy+=List[1]
-            print('Making bed!')
-            print(f'next_energy...+{List[1]}\nenergy...-{List[0]}')
-            return 1
+        if not utility['name']: return 1
+        if 'energy' in utility['stats'].keys() and ma.player_energy<-1*utility['stats']['energy'][gs.background_num]: return 1
+        if 'money' in utility['stats'].keys() and gs.money<-1*utility['stats']['money'][gs.background_num]: return 1
+        if 'energy' in utility['stats'].keys(): ma.player_energy+=utility['stats']['energy'][gs.background_num]
+        if 'next_energy' in utility['stats'].keys(): ma.next_energy+=utility['stats']['next_energy'][gs.background_num]
+        if 'money' in utility['stats'].keys(): gs.money+=utility['stats']['money'][gs.background_num]
+        if 'health' in utility['stats'].keys(): gs.health+=utility['stats']['health'][gs.background_num]
+        if 'strength' in utility['stats'].keys(): gs.strength+=utility['stats']['strength'][gs.background_num]
+        if 'agility' in utility['stats'].keys(): gs.agility+=utility['stats']['agility'][gs.background_num]
+        if 'wisdom' in utility['stats'].keys(): gs.wisdom+=utility['stats']['wisdom'][gs.background_num]
+        if 'talent' in utility['stats'].keys(): gs.talent+=utility['stats']['talent'][gs.background_num]
+        if 'language' in utility['stats'].keys(): gs.language+=utility['stats']['language'][gs.background_num]
+        if 'luck' in utility['stats'].keys(): gs.luck+=utility['stats']['luck'][gs.background_num]
+        if 'badluck' in utility['stats'].keys(): gs.badluck+=utility['stats']['badluck'][gs.background_num]
+        if 'fame' in utility['stats'].keys(): gs.fame+=utility['stats']['fame'][gs.background_num]
             
     def work_value(self,work):
-        if work=='Load_I':
-            if gs.strength+ma.strength>=3 and ma.player_energy>=1:
-                ma.player_energy-=1
-                earn=round(gs.health*(gs.strength+ma.strength)/8)+self.tips(gs.strength+ma.strength)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Load_II':
-            if gs.strength+ma.strength>=7 and ma.player_energy>=2:
-                ma.player_energy-=2
-                earn=round(gs.health*(gs.strength+ma.strength)/3.2)+self.tips(gs.strength+ma.strength)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Load_III':
-            if gs.strength+ma.strength>=13 and ma.player_energy>=3:
-                ma.player_energy-=3
-                earn=round(gs.health*(gs.strength+ma.strength)/1.4)+self.tips(gs.strength+ma.strength)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Mail_I':
-            if gs.agility+ma.agility>=3 and ma.player_energy>=1:
-                ma.player_energy-=1
-                earn=round(gs.health*(gs.agility+ma.agility)/8)+self.tips(gs.agility+ma.agility)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Mail_II':
-            if gs.agility+ma.agility>=7 and ma.player_energy>=2:
-                ma.player_energy-=2
-                earn=round(gs.health*(gs.agility+ma.agility)/3.2)+self.tips(gs.agility+ma.agility)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Mail_III':
-            if gs.agility+ma.agility>=13 and ma.player_energy>=3:
-                ma.player_energy-=3
-                earn=round(gs.health*(gs.agility+ma.agility)/1.4)+self.tips(gs.agility+ma.agility)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Library_I':
-            if gs.wisdom+ma.wisdom>=3 and ma.player_energy>=1:
-                ma.player_energy-=1
-                earn=round(gs.health*(gs.wisdom+ma.wisdom)/8)+self.tips(gs.wisdom+ma.wisdom)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Library_II':
-            if gs.wisdom+ma.wisdom>=7 and ma.player_energy>=2:
-                ma.player_energy-=1
-                earn=round(gs.health*(gs.wisdom+ma.wisdom)/3.2)+self.tips(gs.wisdom+ma.wisdom)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Library_III':
-            if gs.wisdom+ma.wisdom>=13 and ma.player_energy>=3:
-                ma.player_energy-=3
-                earn=round(gs.health*(gs.wisdom+ma.wisdom)/1.4)+self.tips(gs.wisdom+ma.wisdom)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Curve_I':
-            if gs.talent+ma.talent>=3 and ma.player_energy>=1:
-                ma.player_energy-=1
-                earn=round(gs.health*(gs.talent+ma.talent)/8)+self.tips(gs.talent+ma.talent)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Curve_II':
-            if gs.talent+ma.talent>=7 and ma.player_energy>=2:
-                ma.player_energy-=2
-                earn=round(gs.health*(gs.talent+ma.talent)/3.2)+self.tips(gs.talent+ma.talent)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-        elif work=='Curve_III':
-            if gs.talent+ma.talent>=13 and ma.player_energy>=3:
-                ma.player_energy-=3
-                earn=round(gs.health*(gs.talent+ma.talent)/1.4)+self.tips(gs.talent+ma.talent)
-                ma.earn+=earn
-                print(f'earn...+{earn}')
-                return 1
-            
+        if not work['name']: return 1
+        if ma.player_energy<-1*work['stats']['energy'][gs.background_num]: return 1
+        if 'health' in work['stats'].keys() and gs.health<work['stats']['health'][gs.background_num]: return 1
+        if 'strength' in work['stats'].keys() and gs.strength<work['stats']['strength'][gs.background_num]: return 1
+        if 'agility' in work['stats'].keys() and gs.agility<work['stats']['agility'][gs.background_num]: return 1
+        if 'wisdom' in work['stats'].keys() and gs.wisdom<work['stats']['wisdom'][gs.background_num]: return 1
+        if 'talent' in work['stats'].keys() and gs.talent<work['stats']['talent'][gs.background_num]: return 1
+        if 'language' in work['stats'].keys() and gs.language<work['stats']['language'][gs.background_num]: return 1
+        if 'luck' in work['stats'].keys() and gs.luck<work['stats']['luck'][gs.background_num]: return 1
+        if 'badluck' in work['stats'].keys() and gs.badluck<work['stats']['badluck'][gs.background_num]: return 1
+        if 'fame' in work['stats'].keys() and gs.fame<work['stats']['fame'][gs.background_num]: return 1
+        earn=work['stats']['earn'][gs.background_num]
+        ma.earn+=earn
+        print(earn)
+        
     def upgrade_value(self,upgrade):
-        if upgrade=='Energy':
-            gs.energy+=1
-        elif upgrade=='Utility_board':
-            gs.utility_num+=1
-        elif upgrade=='Work_board':
-            gs.work_num+=1
-        elif upgrade=='Store_board':
-            gs.store_num+=1
+        if upgrade=='Energy': gs.energy+=1
+        elif upgrade=='Utility_board': gs.utility_num+=1
+        elif upgrade=='Work_board': gs.work_num+=1
+        elif upgrade=='Store_board': gs.store_num+=1
         elif upgrade=='Stats':
             gs.health+=5
             gs.strength+=2
@@ -644,59 +404,37 @@ class event:
         print('')
 
     def item_value(self,item):
-        if item['stats']['durability']==0:
-            return 1
+        if item['stats']['durability']==0: return 1
         item['stats']['durability']-=1
-        if 'energy' in item['stats'].keys():
-            ma.next_energy+=item['stats']['energy']
-        if 'health' in item['stats'].keys():
-            ma.next_health+=item['stats']['health']
-        if 'strength' in item['stats'].keys():
-            ma.strength+=item['stats']['strength']
-        if 'agility' in item['stats'].keys():
-            ma.agility+=item['stats']['agility']
-        if 'wisdom' in item['stats'].keys():
-            ma.wisdom+=item['stats']['wisdom']
-        if 'talent' in item['stats'].keys():
-            ma.talent+=item['stats']['talent']
-        if 'language' in item['stats'].keys():
-            ma.language+=item['stats']['language']
-        if 'luck' in item['stats'].keys():
-            ma.luck+=item['stats']['luck']
-        if 'badluck' in item['stats'].keys():
-            ma.badluck+=item['stats']['badluck']
+        if 'energy' in item['stats'].keys(): ma.next_energy+=item['stats']['energy']
+        if 'health' in item['stats'].keys(): ma.next_health+=item['stats']['health']
+        if 'strength' in item['stats'].keys(): ma.strength+=item['stats']['strength']
+        if 'agility' in item['stats'].keys(): ma.agility+=item['stats']['agility']
+        if 'wisdom' in item['stats'].keys(): ma.wisdom+=item['stats']['wisdom']
+        if 'talent' in item['stats'].keys(): ma.talent+=item['stats']['talent']
+        if 'language' in item['stats'].keys(): ma.language+=item['stats']['language']
+        if 'luck' in item['stats'].keys(): ma.luck+=item['stats']['luck']
+        if 'badluck' in item['stats'].keys(): ma.badluck+=item['stats']['badluck']
         if 'random' in item['stats'].keys():
             Random=sample(['energy','health','strength','agility','wisdom','talent','language','luck','badluck'],item['stats']['random'])
-            if 'energy' in Random:
-                ma.next_energy+=randint(-2,2)
-            if 'health'in Random:
-                ma.next_health+=randint(-2,2)
-            if 'strength'in Random:
-                ma.strength+=randint(-2,2)
-            if 'agility'in Random:
-                ma.agility+=randint(-2,2)
-            if 'wisdom'in Random:
-                ma.wisdom+=randint(-2,2)
-            if 'talent'in Random:
-                ma.talent+=randint(-2,2)
-            if 'language'in Random:
-                ma.language+=randint(-2,2)
-            if 'luck'in Random:
-                ma.luck+=randint(-2,2)
-            if 'badluck'in Random:
-                ma.badluck+=randint(-2,2)
+            if 'energy' in Random: ma.next_energy+=randint(-2,2)
+            if 'health'in Random: ma.next_health+=randint(-2,2)
+            if 'strength'in Random: ma.strength+=randint(-2,2)
+            if 'agility'in Random: ma.agility+=randint(-2,2)
+            if 'wisdom'in Random: ma.wisdom+=randint(-2,2)
+            if 'talent'in Random: ma.talent+=randint(-2,2)
+            if 'language'in Random: ma.language+=randint(-2,2)
+            if 'luck'in Random: ma.luck+=randint(-2,2)
+            if 'badluck'in Random: ma.badluck+=randint(-2,2)
         
                 
     def tips(self,stat):
         result=0
-        if gs.luck<100:
-            List=[int((gs.luck+ma.luck)/x) for x in range(1,101)]
-        else:
-            List=[x for x in range(1,101)]
+        List=[1 for x in range(gs.luck+ma.luck)]
+        List+=[0 for x in range(gs.badluck+ma.badluck)]
         luck=sample(List,3)
         for i in luck:
-            if i:
-                result+=randint(1,gs.luck+ma.luck)*stat
+            if i: result+=randint(1,gs.luck+ma.luck)*stat-(gs.badluck+ma.badluck)+fame
         return result
         
     def command(self):
@@ -777,11 +515,11 @@ class main:
             print('\nutility\n')
             for i in List_U:
                 print('-',end='')
-                print(i)
+                print(i['name'])
             print('\nwork\n')
             for i in List_W:
                 print('-',end='')
-                print(i)
+                print(i['name'])
             print('')
             print('0'*20,end='\n\n')
             
@@ -809,15 +547,15 @@ item: {gs.item}''')
             if user[0]==ev.command_list[0]:
                 pos=ev.utility_value(List_U[user[1]])
                 if pos:
-                    List_U[user[1]]=''
-                else:
                     print('not available')
+                else:
+                    List_U[user[1]]={'name':''}
             elif user[0]==ev.command_list[1]:
                 pos=ev.work_value(List_W[user[1]])
                 if pos:
-                    List_W[user[1]]=''
-                else:
                     print('not available')
+                else:
+                    List_W[user[1]]={'name':''}
         gs.money+=self.earn
     def store(self):
         List_S=ev.choose_item()
