@@ -320,6 +320,9 @@ class event:
         if 'luck' in utility['stats'].keys(): gs.luck+=utility['stats']['luck'][gs.background_num]
         if 'badluck' in utility['stats'].keys(): gs.badluck+=utility['stats']['badluck'][gs.background_num]
         if 'fame' in utility['stats'].keys(): gs.fame+=utility['stats']['fame'][gs.background_num]
+        for stats in utility['stats'].items():
+            if stats[1][gs.background_num]>=0: print(f'{stats[0]}...+{stats[1][gs.background_num]}')
+            else: print(f'{stats[0]}...{stats[1][gs.background_num]}')
             
     def work_value(self,work):
         if not work['name']: return 1
@@ -335,7 +338,7 @@ class event:
         if 'fame' in work['stats'].keys() and gs.fame<work['stats']['fame'][gs.background_num]: return 1
         earn=work['stats']['earn'][gs.background_num]
         ma.earn+=earn
-        print(earn)
+        print(f'earn...+{earn}')
         
     def upgrade_value(self,upgrade):
         if upgrade=='Energy': gs.energy+=1
@@ -434,7 +437,7 @@ class event:
         List+=[0 for x in range(gs.badluck+ma.badluck)]
         luck=sample(List,3)
         for i in luck:
-            if i: result+=randint(1,gs.luck+ma.luck)*stat-(gs.badluck+ma.badluck)+fame
+            if i: result+=randint(1,gs.luck+ma.luck)*stat-(gs.badluck+ma.badluck)+gs.fame
         return result
         
     def command(self):
@@ -525,19 +528,22 @@ class main:
             
             user=ev.command()
             if user=='Stats':
-                print(f'''
-energy: {self.player_energy}
-money: {gs.money}
-health: {gs.health}
-strength: {gs.strength}+({self.strength})
-agility: {gs.agility}+({self.agility})
-wisdom: {gs.wisdom}+({self.wisdom})
-talent: {gs.talent}+({self.talent})
-language: {gs.language}+({self.language})
-luck: {gs.luck}+({self.luck})
-badluck: {gs.badluck}+({self.badluck})
-fame: {gs.fame}
-item: {gs.item}''')
+                print(f'\nenergy: {self.player_energy}\nmoney: {gs.money}\nhealth: {gs.health}')
+                if self.strength>=0: print(f'strength: {gs.strength} (+{self.strength})')
+                else: print(f'strength: {gs.strength} ({self.strength})')
+                if self.agility>=0: print(f'agility: {gs.agility} (+{self.agility})')
+                else: print(f'agility: {gs.agility} ({self.agility})')
+                if self.wisdom>=0: print(f'wisdom: {gs.wisdom} (+{self.wisdom})')
+                else: print(f'wisdom: {gs.wisdom} ({self.wisdom})')
+                if self.talent>=0: print(f'talent: {gs.talent} (+{self.talent})')
+                else: print(f'talent: {gs.talent} ({self.talent})')
+                if self.language>=0: print(f'language: {gs.language} (+{self.language})')
+                else: print(f'language: {gs.language} ({self.language})')
+                if self.luck>=0: print(f'luck: {gs.luck} (+{self.luck})')
+                else: print(f'luck: {gs.luck} ({self.luck})')
+                if self.badluck>=0: print(f'badluck: {gs.badluck}+({self.badluck})')
+                else: print(f'badluck: {gs.badluck}+({self.badluck})')
+                print(f'fame: {gs.fame}\nitem: {gs.item}\n')
             elif user=='End':
                 gs.money=0
                 ma.earn=0
