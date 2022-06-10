@@ -2,7 +2,7 @@
 ### text_based game
 
 ---
-### ***v2.0.0***
+### ***v2.1.0***
 
 #### 4 utilities added
   + Talk_I
