@@ -2,6 +2,16 @@
 ### text_based game
 
 ---
+### ***v2.1.1***
+
+#### printing system changed
+  + utility
+  + work
+  + stats
+
+#### bugs fixed
+  + tip
+
 ### ***v2.1.0***
 
 #### 4 utilities added
