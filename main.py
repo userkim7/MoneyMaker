@@ -113,9 +113,9 @@ class game_set:
         if self.level=='Normal':
             pass
         elif self.level=='Hard':
-            self.tax_mul=[50,300]
+            self.tax_mul=[50,150]
         elif self.level=='Insane':
-            self.tax_mul=[50,300]
+            self.tax_mul=[50,150]
             self.tax_add=[10/100,15/100]
 
         self.energy=self.character['stats']['energy']
