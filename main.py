@@ -33,7 +33,7 @@ class game_set:
                              {'name':'Sonic','stats':{'energy':5,'money':300,'health':70,'strength':2,'agility':13,'wisdom':-2,'talent':5,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
                              {'name':'Stella','stats':{'energy':8,'money':700,'health':60,'strength':5,'agility':4,'wisdom':3,'talent':2,'language':3,'luck':1,'badluck':3,'fame':0,'item':[]}},
                              {'name':'Steve','stats':{'energy':5,'money':300,'health':30,'strength':2,'agility':4,'wisdom':7,'talent':3,'language':3,'luck':0,'badluck':5,'fame':0,'item':['Glasses']}},
-                             {'name':'Winne','stats':{'energy':20,'money':5000,'health':10,'strength':10,'agility':10,'wisdom':10,'talent':10,'language':3,'luck':10,'badluck':3,'fame':50,'item':['Cheater`s Hat']}},
+                             {'name':'Winne','stats':{'energy':20,'money':5000,'health':10,'strength':10,'agility':10,'wisdom':10,'talent':10,'language':3,'luck':10,'badluck':3,'fame':0,'item':['Cheater`s Hat']}},
                              {'name':'Tester','stats':{'energy':3,'money':30,'health':30,'strength':0,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
                              ]
         self.background_list=['Village', #Lv1
