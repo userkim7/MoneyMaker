@@ -2,9 +2,15 @@
 ### text_based game
 
 ---
+### ***v2.1.4***
+
+#### balance patched
+  + hard ---
+  + insane ---
+
 ### ***v2.1.3***
 
-#### balances patched
+#### balance patched
   + event appearance condition +
   + rest condition -
   + Cheater`s hat health ++
