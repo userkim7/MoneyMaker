@@ -2,6 +2,16 @@
 ### text_based game
 
 ---
+### ***v2.1.2***
+
+#### balance patched
+  + store appearance condition +
+
+#### bugs fixed
+  + type_num apply
+  + clear pharase not showing
+  + fame stat apply
+
 ### ***v2.1.1***
 
 #### printing system changed
@@ -9,7 +19,7 @@
   + work
   + stats
 
-#### bugs fixed
+#### bug fixed
   + tip
 
 ### ***v2.1.0***
