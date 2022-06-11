@@ -13,7 +13,7 @@ class game_set:
         self.language=3
         self.luck=3
         self.badluck=3
-        self.fame=50
+        self.fame=0
         self.item=[]
         self.item_bag=[]
         
@@ -72,14 +72,14 @@ class game_set:
                     print('\nincorrect input\n')
                     user=''
 
+        setting.append(user)
+
         while user not in self.level_list:
             user=input('choose level: ')
             if user not in self.level_list:
                 print('\nincorrect input\n')
 
         self.level=user
-                
-        setting.append(user)
 
         run=True
         character={}
@@ -105,10 +105,10 @@ class game_set:
 
     def setting_game(self,setting):
 
-        if setting[0][len(setting[0])-5:]=='-days':
-            self.type_num=int(setting[0][:len(setting[0])-5])
-        elif setting[0]=='Infinity':
+        if setting[0]=='Infinity':
             pass
+        else:
+            self.type_num=int(setting[0][:len(setting[0])-5])
 
         if self.level=='Normal':
             pass
@@ -128,6 +128,7 @@ class game_set:
         self.language=self.character['stats']['language']
         self.luck=self.character['stats']['luck']
         self.badluck=self.character['stats']['badluck']
+        self.fame=self.character['stats']['fame']
         self.item+=self.character['stats']['item']
 
         for item in self.item:
@@ -684,14 +685,14 @@ while True:
         if days%5==0:
             ev.choose_upgrade()
 
-        if choice([0,1]):
+        if choice([0,1]) and gs.fame>=3:
             ma.store()
             
         days+=1
         if not gs.type_num:
             run_list.append(0)
 
-    if days==gs.type_num:           
+    if days==gs.type_num+1 and gs.type_num!=0:           
         print(f'\nYou have survived for {gs.type_num} days!\n')
 
     user=''
