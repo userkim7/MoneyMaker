@@ -2,6 +2,21 @@
 ### text_based game
 
 ---
+### ***v2.1.3***
+
+#### balances patched
+  + event appearance condition +
+  + rest condition -
+  + Cheater`s hat health ++
+  + Winne money +++
+  + Winne language +++
+  + Winne badluck --
+  + Winne item(Linger) added 
+  + Spelling error
+
+#### bug fixed
+  + rest 
+
 ### ***v2.1.2***
 
 #### balance patched
