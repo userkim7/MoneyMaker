@@ -186,8 +186,8 @@
 
 ### ***v0.4.1***
 #### balance patch
-  + EnergyDrink_I +health --
-  + EnergyDrink_II +health ---
+  + Medicine_I --
+  + Medicine_II ---
   + Health loss +
 
 #### optimized the codes
