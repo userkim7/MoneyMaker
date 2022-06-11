@@ -33,8 +33,8 @@ class game_set:
                              {'name':'Sonic','stats':{'energy':5,'money':300,'health':70,'strength':2,'agility':13,'wisdom':-2,'talent':5,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
                              {'name':'Stella','stats':{'energy':8,'money':700,'health':60,'strength':5,'agility':4,'wisdom':3,'talent':2,'language':3,'luck':1,'badluck':3,'fame':0,'item':[]}},
                              {'name':'Steve','stats':{'energy':5,'money':300,'health':30,'strength':2,'agility':4,'wisdom':7,'talent':3,'language':3,'luck':0,'badluck':5,'fame':0,'item':['Glasses']}},
-                             {'name':'Winne','stats':{'energy':20,'money':5000,'health':10,'strength':10,'agility':10,'wisdom':10,'talent':10,'language':3,'luck':10,'badluck':3,'fame':0,'item':['Cheater`s Hat']}},
-                             {'name':'Tester','stats':{'energy':3,'money':30,'health':30,'strength':0,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Winne','stats':{'energy':20,'money':10000,'health':10,'strength':10,'agility':10,'wisdom':10,'talent':10,'language':10,'luck':10,'badluck':0,'fame':0,'item':['Cheater`s Hat','Linger']}},
+                             {'name':'Tester','stats':{'energy':3,'money':20,'health':30,'strength':0,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
                              ]
         self.background_list=['Village', #Lv1
                               'Town','School', #Lv2
@@ -151,7 +151,7 @@ class event:
             ['DropMoney','Fire']
             ]
         self.upgrade_list=['Energy','Utility_board','Work_board','Store_board','Stats','Luck']
-        self.item_list=[{'name':'Cheater`s Hat','stats':{'durability':99,'health':-10},'price':None},
+        self.item_list=[{'name':'Cheater`s Hat','stats':{'durability':99,'health':-5},'price':None},
                         {'name':'MoonStone','stats':{'durability':10,'health':1},'price':500},
                         {'name':'Linger','stats':{'durability':3,'health':5},'price':800},
                         {'name':'NoteBook','stats':{'durability':7,'wisdom':1},'price':300},
@@ -216,7 +216,7 @@ class event:
                                                 {'name':'Curve_I','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/4)+self.tips(gs.talent+ma.talent)
                                                                                   ],
                                                                           'energy':[-1],'talent':[3]}},
-                                                {'name':'Speach_I','stats':{'earn':[round(gs.health*(gs.language+ma.language)/4)+self.tips(gs.language+ma.language)
+                                                {'name':'Speech_I','stats':{'earn':[round(gs.health*(gs.language+ma.language)/4)+self.tips(gs.language+ma.language)
                                                                                   ],
                                                                           'energy':[-1],'language':[3]}}
                                                 ] 
@@ -233,7 +233,7 @@ class event:
                                                 {'name':'Curve_II','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.8)+self.tips(gs.talent+ma.talent)
                                                                                   ],
                                                                           'energy':[-2],'talent':[7]}},
-                                                {'name':'Speach_II','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.8)+self.tips(gs.language+ma.language)
+                                                {'name':'Speech_II','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.8)+self.tips(gs.language+ma.language)
                                                                                   ],
                                                                           'energy':[-2],'language':[7]}}
                                                 ] 
@@ -250,7 +250,7 @@ class event:
                              {'name':'Curve_III','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.2)+self.tips(gs.talent+ma.talent)
                                                                                   ],
                                                                           'energy':[-3],'talent':[13]}},
-                             {'name':'Speach_III','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.2)+self.tips(gs.language+ma.language)
+                             {'name':'Speech_III','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.2)+self.tips(gs.language+ma.language)
                                                                                   ],
                                                                           'energy':[-3],'language':[13]}}
                              ] 
@@ -506,11 +506,11 @@ class main:
         self.next_energy=0
         gs.health+=self.next_health
         self.next_health=0
-        if gs.health<0:
+        if gs.health<=0:
             self.rest=True
             user='Nextday'
-        if not self.rest:
-            user=''
+        if self.rest: user='Nextday'
+        else: user=''
         List_U=ev.choose_utility()
         List_W=ev.choose_work()
         while not user=='Nextday':
@@ -667,7 +667,7 @@ while True:
         else:
             gs.health+=int((ma.player_energy+1-gs.energy)/1.2)
 
-        ev.choose_event()
+        if not ma.rest: ev.choose_event()
 
         if days%5==0: 
             tax=int(days*gs.tax_mul[1]+ma.earn*gs.tax_add[1])
