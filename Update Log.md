@@ -2,6 +2,14 @@
 ### text_based game
 
 ---
+### ***v2.1.5***
+
+#### end massage changed
+
+#### bug fixed
+  + earn
+  + work energy
+
 ### ***v2.1.4***
 
 #### balance patched
