@@ -2,6 +2,11 @@
 ### text_based game
 
 ---
+### ***v2.1.6***
+
+#### bug fixed
+  + work energy
+
 ### ***v2.1.5***
 
 #### end massage changed
