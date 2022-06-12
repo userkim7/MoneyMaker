@@ -34,7 +34,7 @@ class game_set:
                              {'name':'Stella','stats':{'energy':8,'money':700,'health':60,'strength':5,'agility':4,'wisdom':3,'talent':2,'language':3,'luck':1,'badluck':3,'fame':0,'item':[]}},
                              {'name':'Steve','stats':{'energy':5,'money':300,'health':30,'strength':2,'agility':4,'wisdom':7,'talent':3,'language':3,'luck':0,'badluck':5,'fame':0,'item':['Glasses']}},
                              {'name':'Winne','stats':{'energy':20,'money':10000,'health':10,'strength':10,'agility':10,'wisdom':10,'talent':10,'language':10,'luck':10,'badluck':0,'fame':0,'item':['Cheater`s Hat','Linger']}},
-                             {'name':'Tester','stats':{'energy':3,'money':20,'health':30,'strength':0,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
+                             {'name':'Tester','stats':{'energy':3,'money':200,'health':30,'strength':0,'agility':3,'wisdom':3,'talent':3,'language':3,'luck':3,'badluck':3,'fame':0,'item':[]}},
                              ]
         self.background_list=['Village', #Lv1
                               'Town','School', #Lv2
@@ -144,6 +144,7 @@ class event:
     def __init__(self):
         self.utility_list=[]
         self.work_list=[]
+        self.work_value_list=[]
         self.good_event_list=[
             ['PickMoney','PickClover','Party','TakeMushroom']
             ]
@@ -176,84 +177,53 @@ class event:
                 break
     
     def make_list(self):
-        if gs.background_num==0:
-            for _ in range(5): self.utility_list+=[{'name':'Recycle','stats':{'money':[50]}}
-                                                   ] 
-            for _ in range(4): self.utility_list+=[{'name':'EnergyDrink_I','stats':{'energy':[1],'money':[-100]}},
-                                                   {'name':'Lemonade','stats':{'energy':[-1],'money':[150]}},
-                                                   {'name':'Weight_I','stats':{'energy':[-1],'strength':[1]}},
-                                                   {'name':'Run_I','stats':{'energy':[-1],'agility':[1]}},
-                                                   {'name':'Read_I','stats':{'energy':[-1],'wisdom':[1]}},
-                                                   {'name':'Origami_I','stats':{'energy':[-1],'talent':[1]}},
-                                                   {'name':'Talk_I','stats':{'energy':[-1],'language':[1]}}
-                                                   ] 
-            for _ in range(3): self.utility_list+=[{'name':'Medicine_I','stats':{'money':[-200],'health':[10]}}
-                                                   ] 
-            for _ in range(2): self.utility_list+=[{'name':'EnergyDrink_II','stats':{'energy':[2],'money':[-100]}},
-                                                   {'name':'MowLawn','stats':{'energy':[-2],'money':[350]}},
-                                                   {'name':'Weight_II','stats':{'energy':[-2],'strength':[2]}},
-                                                   {'name':'Run_II','stats':{'energy':[-2],'agility':[2]}},
-                                                   {'name':'Read_II','stats':{'energy':[-2],'wisdom':[2]}},
-                                                   {'name':'Origami_II','stats':{'energy':[-2],'talent':[2]}},
-                                                   {'name':'Talk_II','stats':{'energy':[-2],'language':[2]}},
-                                                   {'name':'GoodNight','stats':{'next_energy':[1]}},
-                                                   {'name':'MakeBed','stats':{'energy':[-1],'next_energy':[2]}},
-                                                   {'name':'Volunteer','stats':{'energy':[-1],'money':[-100],'fame':[1]}},
-                                                   {'name':'Steal','stats':{'energy':[-1],'money':[300],'fame':[-1]}}
-                                                   ] 
-            self.utility_list+=[{'name':'Medicine_II','stats':{'money':[-400],'health':[25]}}
-                                ] 
+        for _ in range(5): self.utility_list+=[{'name':'Recycle','stats':{'money':[50]},'use':[1]}
+                                                ] 
+        for _ in range(4): self.utility_list+=[{'name':'EnergyDrink_I','stats':{'energy':[1],'money':[-100]},'use':[1]},
+                                                {'name':'Lemonade','stats':{'energy':[-1],'money':[150]},'use':[1]},
+                                                {'name':'Weight_I','stats':{'energy':[-1],'strength':[1]},'use':[1]},
+                                                {'name':'Run_I','stats':{'energy':[-1],'agility':[1]},'use':[1]},
+                                                {'name':'Read_I','stats':{'energy':[-1],'wisdom':[1]},'use':[1]},
+                                                {'name':'Origami_I','stats':{'energy':[-1],'talent':[1]},'use':[1]},
+                                                {'name':'Talk_I','stats':{'energy':[-1],'language':[1]},'use':[1]}
+                                                ] 
+        for _ in range(3): self.utility_list+=[{'name':'Medicine_I','stats':{'money':[-200],'health':[10]},'use':[1]}
+                                                ] 
+        for _ in range(2): self.utility_list+=[{'name':'EnergyDrink_II','stats':{'energy':[2],'money':[-100]},'use':[1]},
+                                                {'name':'MowLawn','stats':{'energy':[-2],'money':[350]},'use':[1]},
+                                                {'name':'Weight_II','stats':{'energy':[-2],'strength':[2]},'use':[1]},
+                                                {'name':'Run_II','stats':{'energy':[-2],'agility':[2]},'use':[1]},
+                                                {'name':'Read_II','stats':{'energy':[-2],'wisdom':[2]},'use':[1]},
+                                                {'name':'Origami_II','stats':{'energy':[-2],'talent':[2]},'use':[1]},
+                                                {'name':'Talk_II','stats':{'energy':[-2],'language':[2]},'use':[1]},
+                                                {'name':'GoodNight','stats':{'next_energy':[1]},'use':[1]},
+                                                {'name':'MakeBed','stats':{'energy':[-1],'next_energy':[2]},'use':[1]},
+                                                {'name':'Volunteer','stats':{'energy':[-1],'money':[-100],'fame':[1]},'use':[1]},
+                                                {'name':'Steal','stats':{'energy':[-1],'money':[300],'fame':[-1]},'use':[1]}
+                                                ] 
+        self.utility_list+=[{'name':'Medicine_II','stats':{'money':[-400],'health':[25]},'use':[1]}
+                            ] 
 
-            for _ in range(5): self.work_list+=[{'name':'Load_I','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/4)+self.tips(gs.strength+ma.strength)
-                                                                                  ],
-                                                                          'energy':[-1],'strength':[3]}},
-                                                {'name':'Mail_I','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/4)+self.tips(gs.agility+ma.agility)
-                                                                                  ],
-                                                                          'energy':[-1],'agility':[3]}},
-                                                {'name':'Library_I','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/4)+self.tips(gs.wisdom+ma.wisdom)
-                                                                                  ],
-                                                                          'energy':[-1],'wisdom':[3]}},
-                                                {'name':'Curve_I','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/4)+self.tips(gs.talent+ma.talent)
-                                                                                  ],
-                                                                          'energy':[-1],'talent':[3]}},
-                                                {'name':'Speech_I','stats':{'earn':[round(gs.health*(gs.language+ma.language)/4)+self.tips(gs.language+ma.language)
-                                                                                  ],
-                                                                          'energy':[-1],'language':[3]}}
-                                                ] 
-            for _ in range(4): self.work_list+=[] 
-            for _ in range(3): self.work_list+=[{'name':'Load_II','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/1.8)+self.tips(gs.strength+ma.strength)
-                                                                                  ],
-                                                                          'energy':[-2],'strength':[7]}},
-                                                {'name':'Mail_II','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/1.8)+self.tips(gs.agility+ma.agility)
-                                                                                  ],
-                                                                          'energy':[-2],'agility':[7]}},
-                                                {'name':'Library_II','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/1.8)+self.tips(gs.wisdom+ma.wisdom)
-                                                                                  ],
-                                                                          'energy':[-2],'wisdom':[7]}},
-                                                {'name':'Curve_II','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.8)+self.tips(gs.talent+ma.talent)
-                                                                                  ],
-                                                                          'energy':[-2],'talent':[7]}},
-                                                {'name':'Speech_II','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.8)+self.tips(gs.language+ma.language)
-                                                                                  ],
-                                                                          'energy':[-2],'language':[7]}}
-                                                ] 
-            for _ in range(2): self.work_list+=[] 
-            self.work_list+=[{'name':'Load_III','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/1.2)+self.tips(gs.strength+ma.strength)
-                                                                                  ],
-                                                                          'energy':[-3],'strength':[13]}},
-                             {'name':'Mail_III','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/1.2)+self.tips(gs.agility+ma.agility)
-                                                                                  ],
-                                                                          'energy':[-3],'agility':[13]}},
-                             {'name':'Library_III','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/1.2)+self.tips(gs.wisdom+ma.wisdom)
-                                                                                  ],
-                                                                          'energy':[-3],'wisdom':[13]}},
-                             {'name':'Curve_III','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.2)+self.tips(gs.talent+ma.talent)
-                                                                                  ],
-                                                                          'energy':[-3],'talent':[13]}},
-                             {'name':'Speech_III','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.2)+self.tips(gs.language+ma.language)
-                                                                                  ],
-                                                                          'energy':[-3],'language':[13]}}
-                             ] 
+        for _ in range(5): self.work_list+=[{'name':'Load_I','use':[1]},
+                                            {'name':'Mail_I','use':[1]},
+                                            {'name':'Library_I','use':[1]},
+                                            {'name':'Curve_I','use':[1]},
+                                            {'name':'Speech_I','use':[1]}
+                                            ] 
+        for _ in range(4): self.work_list+=[] 
+        for _ in range(3): self.work_list+=[{'name':'Load_II','use':[1]},
+                                            {'name':'Mail_II','use':[1]},
+                                            {'name':'Library_II','use':[1]},
+                                            {'name':'Curve_II','use':[1]},
+                                            {'name':'Speech_II','use':[1]}
+                                            ] 
+        for _ in range(2): self.work_list+=[] 
+        self.work_list+=[{'name':'Load_III','use':[1]},
+                         {'name':'Mail_III','use':[1]},
+                         {'name':'Library_III','use':[1]},
+                         {'name':'Curve_III','use':[1]},
+                         {'name':'Speech_III','use':[1]}
+                         ] 
             
     def choose_utility(self):
         return [choice(self.utility_list) for x in range(gs.utility_num)]
@@ -326,7 +296,58 @@ class event:
             else: print(f'{stats[0]}...{stats[1][gs.background_num]}')
             
     def work_value(self,work):
-        if not work['name']: return 1
+        if not work: return 1
+        self.work_value_list=[
+            {'name':'Load_I','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/4)+self.tips(gs.strength+ma.strength)
+                                              ],
+                                      'energy':[-1],'strength':[3]}},
+            {'name':'Mail_I','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/4)+self.tips(gs.agility+ma.agility)
+                                              ],
+                                      'energy':[-1],'agility':[3]}},
+            {'name':'Library_I','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/4)+self.tips(gs.wisdom+ma.wisdom)
+                                                 ],
+                                         'energy':[-1],'wisdom':[3]}},
+            {'name':'Curve_I','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/4)+self.tips(gs.talent+ma.talent)
+                                               ],
+                                       'energy':[-1],'talent':[3]}},
+            {'name':'Speech_I','stats':{'earn':[round(gs.health*(gs.language+ma.language)/4)+self.tips(gs.language+ma.language)
+                                                ],
+                                        'energy':[-1],'language':[3]}},
+            {'name':'Load_II','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/1.8)+self.tips(gs.strength+ma.strength)
+                                               ],
+                                       'energy':[-2],'strength':[7]}},
+            {'name':'Mail_II','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/1.8)+self.tips(gs.agility+ma.agility)
+                                               ],
+                                       'energy':[-2],'agility':[7]}},
+            {'name':'Library_II','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/1.8)+self.tips(gs.wisdom+ma.wisdom)
+                                                  ],
+                                          'energy':[-2],'wisdom':[7]}},
+            {'name':'Curve_II','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.8)+self.tips(gs.talent+ma.talent)
+                                                ],
+                                        'energy':[-2],'talent':[7]}},
+            {'name':'Speech_II','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.8)+self.tips(gs.language+ma.language)
+                                                 ],
+                                         'energy':[-2],'language':[7]}},
+            {'name':'Load_III','stats':{'earn':[round(gs.health*(gs.strength+ma.strength)/1.2)+self.tips(gs.strength+ma.strength)
+                                                ],
+                                        'energy':[-3],'strength':[13]}},
+            {'name':'Mail_III','stats':{'earn':[round(gs.health*(gs.agility+ma.agility)/1.2)+self.tips(gs.agility+ma.agility)
+                                                ],
+                                        'energy':[-3],'agility':[13]}},
+            {'name':'Library_III','stats':{'earn':[round(gs.health*(gs.wisdom+ma.wisdom)/1.2)+self.tips(gs.wisdom+ma.wisdom)
+                                                   ],
+                                           'energy':[-3],'wisdom':[13]}},
+            {'name':'Curve_III','stats':{'earn':[round(gs.health*(gs.talent+ma.talent)/1.2)+self.tips(gs.talent+ma.talent)
+                                                 ],
+                                         'energy':[-3],'talent':[13]}},
+            {'name':'Speech_III','stats':{'earn':[round(gs.health*(gs.language+ma.language)/1.2)+self.tips(gs.language+ma.language)
+                                                  ],
+                                          'energy':[-3],'language':[13]}}
+            ]
+        for Dict in self.work_value_list:
+            if Dict['name']==work:
+                work=Dict
+                break
         if ma.player_energy<-1*work['stats']['energy'][gs.background_num]: return 1
         if 'health' in work['stats'].keys() and gs.health<work['stats']['health'][gs.background_num]: return 1
         if 'strength' in work['stats'].keys() and gs.strength<work['stats']['strength'][gs.background_num]: return 1
@@ -337,9 +358,10 @@ class event:
         if 'luck' in work['stats'].keys() and gs.luck<work['stats']['luck'][gs.background_num]: return 1
         if 'badluck' in work['stats'].keys() and gs.badluck<work['stats']['badluck'][gs.background_num]: return 1
         if 'fame' in work['stats'].keys() and gs.fame<work['stats']['fame'][gs.background_num]: return 1
+        ma.player_energy-=work['stats']['energy'][gs.background_num]
         earn=work['stats']['earn'][gs.background_num]
         ma.earn+=earn
-        print(f'earn...+{earn}')
+        print(f'energy...{work["stats"]["energy"][gs.background_num]}\nearn...+{earn}')
         
     def upgrade_value(self,upgrade):
         if upgrade=='Energy': gs.energy+=1
@@ -471,7 +493,7 @@ class event:
         if gs.money<0:
             print(f'''
  ∧∧∧∧
-<backrupt>  You survived for {days}days
+<backrupt>  You survived for {days}days with {gs.character["name"]} in {gs.background_list[gs.background_num]}, {gs.level}
  ∨∨∨∨
 ''')
             return 1
@@ -558,7 +580,7 @@ class main:
                 else:
                     List_U[user[1]]={'name':''}
             elif user[0]==ev.command_list[1]:
-                pos=ev.work_value(List_W[user[1]])
+                pos=ev.work_value(List_W[user[1]]['name'])
                 if pos:
                     print('not available')
                 else:
@@ -619,8 +641,8 @@ class main:
 #play
 while True:
     gs=game_set()
-    ev=event()
     ma=main()
+    ev=event()
     ma.setting()
     ev.make_list()
     
@@ -693,7 +715,7 @@ while True:
             run_list.append(0)
 
     if days==gs.type_num+1 and gs.type_num!=0:           
-        print(f'\nYou have survived for {gs.type_num} days!\n')
+        print(f'\nYou have survived for {gs.type_num} days with {gs.character["name"]} in {gs.background_list[gs.background_num]}, {gs.level}!\n')
 
     user=''
     while not user:
