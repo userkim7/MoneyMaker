@@ -358,7 +358,7 @@ class event:
         if 'luck' in work['stats'].keys() and gs.luck<work['stats']['luck'][gs.background_num]: return 1
         if 'badluck' in work['stats'].keys() and gs.badluck<work['stats']['badluck'][gs.background_num]: return 1
         if 'fame' in work['stats'].keys() and gs.fame<work['stats']['fame'][gs.background_num]: return 1
-        ma.player_energy-=work['stats']['energy'][gs.background_num]
+        ma.player_energy+=work['stats']['energy'][gs.background_num]
         earn=work['stats']['earn'][gs.background_num]
         ma.earn+=earn
         print(f'energy...{work["stats"]["energy"][gs.background_num]}\nearn...+{earn}')
