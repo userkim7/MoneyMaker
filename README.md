@@ -39,7 +39,7 @@ talent.......3 &nbsp;&nbsp;&nbsp; language......3
 
 luck.........3 &nbsp;&nbsp;&nbsp; badluck.......3
 
-fame........50   
+fame.........0   
 
 item [ none ]
 
@@ -55,7 +55,7 @@ talent......99 &nbsp;&nbsp;&nbsp; language......3
 
 luck.........5 &nbsp;&nbsp;&nbsp; badluck.......3
 
-fame........50   
+fame.........0   
 
 item [ Scissor ]
 
@@ -71,7 +71,7 @@ talent....0000 &nbsp;&nbsp;&nbsp; language......3
 
 luck.......000 &nbsp;&nbsp;&nbsp; badluck.......3
 
-fame........50   
+fame.........0   
 
 item [ none ]
 
