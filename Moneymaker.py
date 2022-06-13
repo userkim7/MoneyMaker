@@ -151,7 +151,7 @@ class event:
         self.bad_event_list=[
             ['DropMoney','Fire']
             ]
-        self.upgrade_list=['Energy','Utility_board','Work_board','Store_board','Stats','Luck']
+        self.upgrade_list=['Energy','Utility_board','Work_board','Store_board','Stats','Luck','Money']
         self.item_list=[{'name':'Cheater`s Hat','stats':{'durability':99,'health':-5},'price':None},
                         {'name':'MoonStone','stats':{'durability':10,'health':1},'price':500},
                         {'name':'Linger','stats':{'durability':3,'health':5},'price':800},
@@ -374,8 +374,11 @@ class event:
             gs.agility+=2
             gs.wisdom+=2
             gs.talent+=2
+            gs.language+=2
         elif upgrade=='Luck':
             gs.luck+=3
+        elif upgrade=='Money':
+            gs.money+=1000
 
     def event_value(self,Event):
         print('')
@@ -689,7 +692,7 @@ while True:
         else:
             gs.health+=int((ma.player_energy+1-gs.energy)/1.2)
 
-        if not ma.rest: ev.choose_event()
+        if not ma.rest and gs.money>0: ev.choose_event()
 
         if days%5==0: 
             tax=int(days*gs.tax_mul[1]+ma.earn*gs.tax_add[1])
