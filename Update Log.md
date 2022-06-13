@@ -2,6 +2,15 @@
 ### text_based game
 
 ---
+### ***v2.2.0***
+
+#### 1 upgrade added
+  + money
+
+#### balance patched
+  + upgrade stats +
+  + event appearance condition +
+
 ### ***v2.1.6***
 
 #### bug fixed
