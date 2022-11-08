@@ -1,4 +1,8 @@
-# How To Play(v.2.2.0)
+# How To Play(v.3.0.0)
+
+### In developing!
+
+## How To Play(v.2.2.0)
 
 
 ### Choose type
