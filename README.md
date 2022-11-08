@@ -1,4 +1,4 @@
-# How To Play
+# How To Play(v.2.2.0)
 
 
 ### Choose type
@@ -28,53 +28,8 @@ High-tax + n% of the earning
 ### Choose character
 
 + Alex the normal
-
-energy.......5 &nbsp;&nbsp;&nbsp; money.......500
-
-health......50 &nbsp;&nbsp;&nbsp; strength......3
-
-agility......3 &nbsp;&nbsp;&nbsp; wisdom........3
-
-talent.......3 &nbsp;&nbsp;&nbsp; language......3
-
-luck.........3 &nbsp;&nbsp;&nbsp; badluck.......3
-
-fame.........0   
-
-item [ none ]
-
 + Arina the artist
-
-energy.......3 &nbsp;&nbsp;&nbsp; money.......100
-
-health......10 &nbsp;&nbsp;&nbsp; strength....-99
-
-agility....-99 &nbsp;&nbsp;&nbsp; wisdom........0
-
-talent......99 &nbsp;&nbsp;&nbsp; language......3
-
-luck.........5 &nbsp;&nbsp;&nbsp; badluck.......3
-
-fame.........0   
-
-item [ Scissor ]
-
 + Bob the healthy
-
-energy.....000 &nbsp;&nbsp;&nbsp; money.....00000
-
-health....0000 &nbsp;&nbsp;&nbsp; strength...0000
-
-agility...0000 &nbsp;&nbsp;&nbsp; wisdom.....0000
-
-talent....0000 &nbsp;&nbsp;&nbsp; language......3
-
-luck.......000 &nbsp;&nbsp;&nbsp; badluck.......3
-
-fame.........0   
-
-item [ none ]
-
 + Emma the energetic
 + Fred the farmer
 + Genie the smart
