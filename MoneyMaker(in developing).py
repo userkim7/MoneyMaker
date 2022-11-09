@@ -185,7 +185,7 @@ class Game:
 
     def list_utility(self):
         List=copy.deepcopy(event.set_utility())
-        Check=['□','□','□']
+        Check=['□','□','□'] ###
         Num=function.list('Utility\n',List,Check)
 
 
