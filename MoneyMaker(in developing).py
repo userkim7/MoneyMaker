@@ -1,6 +1,5 @@
 import random
 import copy
-import keyboard
 import os
 import time
 import msvcrt
@@ -64,7 +63,7 @@ class Function:
         else: print(Str+'█'*(Num//7)+['','▎','▍','▌','▋','▊','▉'][Num%7]+Stat)
 
     def stats(self):
-        print(player.name+', '+player.map+'\n'+'-'*20)
+        print(player.name+', '+game.map+'\n'+'-'*20)
         self.bar('Energy ',0)
         self.bar('Money  ',player.money)
         self.bar('Health ',player.health)
@@ -99,7 +98,7 @@ class Function:
 
 class Setting:
     def __init__(self):
-        self.map_list=[{'name':'Village','usable':'□','description':'✪ soft and easy'},
+        self.map_list=[{'name':'Village','usable':'□','description':'✪ soft and easy','list':[[0,4],[1,4],[2,4],[3,4],[4,3],[5,3],[6,3],[7,3],[8,4],[9,2],[10,5],[11,3],[12,1],[13,3],[14,2],[15,3],[16,1],[17,2],[18,2]]},
                        {'name':'Town','usable':'▩','description':'✪✪'},
                        {'name':'School','usable':'▩','description':'✪✪'},
                        {'name':'Farm','usable':'▩','description':'✪✪✪'},
@@ -141,7 +140,7 @@ class Setting:
         Check=[Map['usable'] for Map in self.map_list]
         Num=function.list('Choose Your Map\n',self.map_list,Check)
         self.map=copy.deepcopy(self.map_list[Num])
-        player.map=self.map_list[Num]['name']
+        game.map=self.map_list[Num]['name']
 
     def choose_character(self):
         Check=[Character['usable'] for Character in self.character_list]
@@ -161,6 +160,11 @@ class Setting:
         player.luck=self.character['stats']['luck']
         player.fame=self.character['stats']['fame']
         #player.bag+=self.character['stats']['item']
+
+    def set_utility(self):
+        for List in self.map['list']:
+            for _ in range(List[1]):
+                game.utility_list.append(event.utility_list[List[0]])
         
 
 class Main:
@@ -169,11 +173,20 @@ class Main:
 
 
 class Game:
-    def __init__(self):        
-        self.total=0
-        self.utility=3
-        self.work=3
-        self.store=3
+    def __init__(self):
+        self.map=''
+
+        self.utility_list=[]
+        
+        self.total_earn=0
+        self.utility_num=3
+        self.work_num=3
+        self.store_num=3
+
+    def list_utility(self):
+        List=copy.deepcopy(event.set_utility())
+        Check=['□','□','□']
+        Num=function.list('Utility\n',List,Check)
 
 
 class Event:
@@ -182,7 +195,7 @@ class Event:
                         ]
         self.event_list=[{},
                          ]
-        self.utility_list=[{'name':'Weight_I','stats':{'energy':-1,'strength':1}},
+        self.utility_list=[{'name':'Weight_I','stats':{'energy':-1,'strength':1}}, 
                            {'name':'Run_I','stats':{'energy':-1,'agility':1}},
                            {'name':'Read_I','stats':{'energy':-1,'wisdom':1}},
                            {'name':'Origami_I','stats':{'energy':-1,'talent':1}},
@@ -205,11 +218,13 @@ class Event:
         self.work_list=[{},
                         ]
 
+    def set_utility(self):
+        return random.sample(game.utility_list,game.utility_num)
+
 
 class Player:
     def __init__(self):
         self.name=''
-        self.map=''
         
         self.energy=0
         self.energy_left=0
@@ -236,4 +251,6 @@ player=Player()
 ###
 setting.choose_map()
 setting.choose_character()
-time.sleep(3)
+setting.set_utility()
+game.list_utility()
+time.sleep(5)
